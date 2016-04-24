@@ -1,0 +1,128 @@
+<!-- notice board container -->
+<div class="box box-primary" ng-controller="noticeBoardCtrl as noticeBoard">
+  <div class="box-header with-border">
+    <i class="fa fa-newspaper-o"></i>
+    <h3 class="box-title"> Notice Board </h3>
+    <div class="box-tools pull-right">
+      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+    </div>
+    <!-- /.box-tools -->
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body no-padding">
+
+
+    <div class="nav-tabs-custom" style="margin:0;">
+      <!-- Tabs within a box -->
+      <ul class="nav nav-tabs pull-right" style="font-weight:bold;">
+        <li class="active"><a href="#news" data-toggle="tab" aria-expanded="true">News</a></li>
+        <li><a href="#notice" data-toggle="tab" aria-expanded="false">Notices</a></li>
+        <li><a href="#event" data-toggle="tab" aria-expanded="false">Events</a></li>
+        <li class="pull-left" style="padding:10px">Date</li>
+      </ul>
+      <div class="tab-content no-padding">
+        <!-- News panel -->
+        <div class="tab-pane active" id="news">
+          <div class="box-body no-padding">
+            <table class="table table-hover">
+              <!--thead>
+                <tr>
+                  <th>Date</th>
+                  <th>News</th>
+                </tr>
+              </thead-->
+              <tbody>
+                <tr ng-repeat="news in noticeBoard.news">
+                  <td style="min-width:90px;">{{ news.date }}</td>
+                  <td><a href="#">{{ news.headline }}</a></td>
+                </tr>
+                <!--tr>
+                  <td>11-7-2014</td>
+                  <td><a href="#">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</a></td>
+                </tr-->
+              </tbody>
+            </table>
+          </div>
+          <div class="box-footer clearfix" style="background-color:#3c8dbc;">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">See all &raquo;</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /News panel -->
+
+        <!-- Notice panel -->
+        <div class="tab-pane" id="notice">
+          <div class="box-body no-padding">
+            <table class="table table-hover">
+              <!--thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Notices</th>
+                </tr>
+              </thead-->
+              <tbody>
+                <tr ng-repeat="notice in noticeBoard.notices">
+                  <td style="min-width:90px;">{{ notice.date }}</td>
+                  <td><a href="#">{{ notice.subject }}</a></td>
+                </tr>
+                <!--tr>
+                  <td>11-7-2014</td>
+                  <td><a href="#">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</a></td>
+                </tr-->
+              </tbody>
+            </table>
+          </div>
+          <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">See all &raquo;</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /Notice panel -->
+
+        <!-- Event panel -->
+        <div class="tab-pane" id="event">
+          <div class="box-body no-padding">
+            <table class="table table-hover">
+              <!--thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Events</th>
+                </tr>
+              </thead-->
+              <tbody>
+                <tr ng-repeat="event in noticeBoard.events">
+                  <td style="min-width:90px;">{{ event.date }}</td>
+                  <td><a href="#">{{ event.eventName }}</a></td>
+                </tr>
+                <!--tr>
+                  <td>11-7-2014</td>
+                  <td><a href="#">Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</a></td>
+                </tr-->
+              </tbody>
+            </table>
+          </div>
+          <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">See all &raquo;</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /Event panel -->
+      </div>
+    </div>
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /notice board container -->
