@@ -2,7 +2,7 @@
 This file contain main layout directives:
 a. Notice Board
 b. Course Panel
-c. Calendar Panel
+c. Calendar Widget
 d. Quick Links
 ---------------------------------------*/
 
@@ -25,10 +25,10 @@ app.directive('coursePanel', function(){
 });
 
 // Calendar Panel ------------------------
-app.directive('calendarPanel', function(){
+app.directive('calendarWidget', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'calendar-panel.html'
+		templateUrl: 'calendar-widget.html'
 	};
 });
 
