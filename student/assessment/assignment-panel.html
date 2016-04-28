@@ -1,0 +1,172 @@
+<style type="text/css" rel="stylesheet">
+  .table-custom{
+    width:100%;
+  }
+  .table-custom td, .table-custom th{
+    padding: 7px;
+  }
+  .alert-success-custom{
+    background-color:#dff0d8;
+    color:#3c763d;
+    border-color:#d6e9c6;
+  }
+  .alert-info-custom{
+    background-color:#d9edf7;
+    color:#31708f;
+    border-color:#bce8f1;
+  }
+  .alert-warning-custom{
+    background-color:#fcf8e3;
+    color:#8a6d3b;
+    border-color:#faebcc;
+  }
+  .alert-danger-custom{
+    background-color:#f2dede;
+    color:#a94442;
+    border-color:#ebccd1;
+  }
+</style>
+
+<div class="nav-tabs-custom">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_1" data-toggle="tab">Assignments</a></li>
+    <li><a href="#tab_2" data-toggle="tab">Assignment Grades</a></li>
+    <li><a href="#tab_3" data-toggle="tab">Assignment Submission</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active table-responsive" id="tab_1">
+      <table class="table-custom table-bordered">
+        <tr>
+          <th class="text-center" style="width: 70px;">Assignment Code</th>
+          <th class="text-center cell-header" style="width: 70px;">Subject</th>
+          <th class="text-center cell-header">Assignment</th>
+          <th class="text-center cell-header" style="width: 70px;">Last Date for Submission</th>
+          <th class="text-center cell-header">Comments or Notes</th>
+        </tr>
+        <tr>
+          <td>SE301A</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>27-12-2016</td>
+          <td>Sent in PDF format</td>
+        </tr>
+        <tr>
+          <td>SE301B</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>27-12-2016</td>
+          <td>Sent in PDF format</td>
+        </tr>
+        <tr>
+          <td>SE302A</td>
+          <td>SE 302</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>27-12-2016</td>
+          <td>Sent in PDF format</td>
+        </tr>
+        <tr>
+          <td>SE301C</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>27-12-2016</td>
+          <td>Sent in PDF format</td>
+        </tr>
+      </table>
+    </div>
+    <!-- /.tab-pane -->
+    <div class="tab-pane table-responsive" id="tab_2">
+      <table class="table-custom table-bordered">
+        <tr>
+          <th class="text-center" style="width: 70px;">Assignment Code</th>
+          <th class="text-center cell-header" style="width: 70px;">Subject</th>
+          <th class="text-center cell-header">Assignment</th>
+          <th class="text-center cell-header" style="width: 70px;">Grade</th>
+          <th class="text-center cell-header">Status</th>
+        </tr>
+        <tr>
+          <td>SE301A</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>A</td>
+          <td>Submitted</td>
+        </tr>
+        <tr>
+          <td>SE301B</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>-</td>
+          <td>To be evaluated</td>
+        </tr>
+        <tr>
+          <td>SE302A</td>
+          <td>SE 302</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>-</td>
+          <td>Not submitted</td>
+        </tr>
+        <tr>
+          <td>SE301C</td>
+          <td>SE 301</td>
+          <td><a href="#">assignment_12_02_2016.pdf</a></td>
+          <td>C</td>
+          <td>Submitted</td>
+        </tr>
+      </table>
+    </div>
+    <!-- /.tab-pane -->
+    <div class="tab-pane" id="tab_3">
+      <div class="box box-solid" style="border:1px solid #f4f4f4;">
+        <!-- form start -->
+        <form role="form">
+          <div class="box-header hidden">
+            <div class="alert alert-danger-custom alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4>	<i class="icon fa fa-warning"></i> Alert!</h4>
+              Error: File Size exceeds the limit.
+            </div>
+            <div class="alert alert-success-custom alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4>	<i class="icon fa fa-check"></i> Alert!</h4>
+              Success alert preview. This alert is dismissable.
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="form-group">
+              <label>Course</label>
+              <select class="form-control">
+                <option disabled selected>Select the subject</option>
+                <option>SE 301</option>
+                <option>SE 302</option>
+                <option>SE 303</option>
+                <option>SE 304</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Assignment</label>
+              <select class="form-control">
+                <option disabled selected>Select the assignment</option>
+                <option>SE301A</option>
+                <option>SE301B</option>
+                <option>SE302A</option>
+                <option>SE301C</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+
+              <p class="help-block">File size should not exceed 25 MB.</p>
+            </div>
+          </div>
+          <!-- /.box-body -->
+
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+  <!-- /.tab-content -->
+</div>
