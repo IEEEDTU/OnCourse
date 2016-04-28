@@ -141,22 +141,117 @@ app.directive('discussionPanel', function(){
 
 // Course Description Controller
 app.controller('descriptionCtrl', function(){
+	this.course = {
+		courseId: "SE201",
+		courseType: "Core",
+		courseName: "Object Oriented Programming",
+		description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+		credits: "4",
+		sessMaxMarks: "30",
+		endMaxMarks: "70",
+		maxMarks: "100",
+		minPassingMarks: "40",
+		semester: "3"
+	}
+		
 });
 
 // Course Curriculum Controller
 app.controller('curriculumCtrl', function(){
+	this.syllabus = [{
+		unitId: "Unit 1",
+		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+
+	},
+	{
+		unitId: "Unit 2",
+		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo . nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+
+	},
+	{
+		unitId: "Unit 3",
+		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+
+	}];
 });
 
 // Instructor Controller
 app.controller('instructorCtrl', function(){
+	this.faculty = {
+		dtuRegId: "DTU/CSE/030",
+		name: "ABC XYZ",
+		personalEmail: "abc@gmail.com",
+		designation: "Associate professor",
+		jobType: "Permanent",
+		department: "CSE"
+	}
 });
 
 // Resource Controller
 app.controller('resourceCtrl', function(){
+	this.resource = [{
+		resourceId: "1",
+		authors: "R.S. Pillai",
+		edition: "2",
+		publisher: "McGraw Hill",
+		bookName: "Data Structures"
+	},
+	{
+		resourceId: "2",
+		authors: "R.S. Pillai",
+		edition: "2",
+		publisher: "McGraw Hill",
+		bookName: "Data Structures"
+	},
+	{
+		resourceId: "3",
+		authors: "R.S. Pillai",
+		edition: "2",
+		publisher: "McGraw Hill",
+		bookName: "Data Structures"
+	}];
+	this.weblinks = [{
+		resourceId: "4",
+		link: "www.dropbox.com"
+	},
+	{
+		resourceId: "5",
+		link: "www.dropbox.com"
+	}];
 });
 
 // Assignment Controller
 app.controller('assignmentCtrl', function(){
+	this.done = [{
+		assignmentId: "1",
+		description : "Advanced Computers",
+		submitted: "10-12-2015"
+	},
+	{
+		assignmentId: "2",
+		description: "Advanced Computers",
+		submitted: "11-12-2015"
+	},
+	{
+		assignmentId: "3",
+		description: "Advanced Computers",
+		submitted: "20-12-2015"
+	}];
+	this.pending = [{
+		assignmentId: "1",
+		description: "Advanced Computers",
+		dueDate: "10-12-2015"
+	},
+	{
+		assignmentId: "2",
+		description: "Advanced Computers",
+		dueDate: "11-12-2015"
+	},
+	{
+		assignmentId: "3",
+		description: "Advanced Computers",
+		dueDate: "20-12-2015"
+	}];
 });
 
 // Discussion Controller
