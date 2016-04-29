@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<div ng-controller="instructorCtrl as instructor">
+
+	<div class="box-body no-padding">
+           
+            <h4>Assigned Instructor</h4>
+            <table class="table table-hover">
+              
+              <tbody>
+                
+                <tr>
+                  <td style="min-width:90px;">ID</td>
+                  <td>{{ instructor.faculty.dtuRegId }}</a></td>
+                </tr>
+                <tr>
+                  <td style="min-width:90px;">Name</td>
+                  <td>{{ instructor.faculty.name }}</a></td>
+                </tr>
+                <tr>
+                  <td style="min-width:90px;">Email Id</td>
+                  <td>{{ instructor.faculty.personalEmail }}</a></td>
+                </tr>
+                <tr>
+                  <td style="min-width:90px;">Designation</td>
+                  <td>{{ instructor.faculty.designation }}</a></td>
+                </tr>
+                <tr>
+                  <td style="min-width:90px;">Job type</td>
+                  <td>{{ instructor.faculty.jobType }}</a></td>
+                </tr>
+                <tr>
+                  <td style="min-width:90px;">Department</td>
+                  <td>{{ instructor.faculty.department }}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+</div>

@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+<div ng-controller="resourceCtrl as resources">
 
-</body>
-</html>
+	<div class="box-body no-padding" >
+	<h4>Resources</h4>
+            <table class="table table-hover">
+              
+              <tbody>
+              	<tr>
+                  <td><b>ID<b></td>
+                  <td><b>Authors</b></td>
+                  <td><b>Edition</b></td>
+                  <td><b>Publisher</b></td>
+                  <td><b>Name</b></td>
+                </tr>
+              	<tr ng-repeat="resource1 in resources.resource">
+                  <td><b>{{ resource1.resourceId }}<b></td>
+                  <td>{{ resource1.authors }}</td>
+                  <td>{{ resource1.edition }}</td>
+                  <td>{{ resource1.publisher }}</td>
+                  <td>{{ resource1.bookName }}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <h4>Web links</h4>
+            <table class="table table-hover">
+              
+              <tbody>
+            <tr ng-repeat="link1 in resources.weblinks">
+                  <td><b>{{ link1.resourceId }}<b></td>
+                  <td>{{ link1.link }}</td>
+                </tr>
+
+              </tbody>
+              </table>
+            
+          </div>
+</div>

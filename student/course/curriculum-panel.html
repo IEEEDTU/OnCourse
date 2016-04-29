@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<div ng-controller="curriculumCtrl as curriculum">
+
+	<div class="box-body no-padding" ng-repeat="syllabus1 in curriculum.syllabus">
+            <table class="table table-hover">
+              
+              <tbody>
+
+              	<tr>
+                  <td><b>{{ syllabus1.unitId }}<b></td>
+                  
+                </tr>
+                <tr>
+                  <td>{{ syllabus1.unitDescription }}</td>
+                	
+                </tr>
+                
+              </tbody>
+            </table><br>
+            
+          </div>
+</div>

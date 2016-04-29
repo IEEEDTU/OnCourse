@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<div ng-controller="assignmentCtrl as assignment">
+
+	<div class="box-body no-padding">
+           
+            <h4>Submitted Assignments</h4>
+            <table class="table table-hover">
+              
+              <tbody>
+              	<tr>
+                  <td><b>Assignment ID<b></td>
+                  <td><b>Description</b></td>
+                  <td><b>Date Submitted</b></td>
+                </tr>
+              	<tr ng-repeat="assignment1 in assignment.done">
+                  <td><b>{{ assignment1.assignmentId }}<b></td>
+                  <td>{{ assignment1.description }}</td>
+                  <td>{{ assignment1.submitted }}</td>
+                 </tr>
+                
+              </tbody>
+            </table>
+            <h4>Pending Assignments</h4>
+            <table class="table table-hover">
+              
+              <tbody>
+              	<tr>
+                  <td><b>Assignment ID<b></td>
+                  <td><b>Description</b></td>
+                  <td><b>Date Submitted</b></td>
+                </tr>
+              	<tr ng-repeat="assignment2 in assignment.pending">
+                  <td><b>{{ assignment2.assignmentId }}<b></td>
+                  <td>{{ assignment2.description }}</td>
+                  <td>{{ assignment2.dueDate }}</td>
+                 </tr>
+                
+              </tbody>
+            </table>
+          </div>
+</div>
