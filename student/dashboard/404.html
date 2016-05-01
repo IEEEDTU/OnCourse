@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="profiler">
+<html ng-app="dashboard">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,42 +55,30 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>
-            Profile
-            <small>Projects, Interests & Skills</small>
-          </h1>
+          <h1>Error</h1>
         </section>
 
         <!-- Main content -->
         <section class="content">
-          <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-12">
-              <user-widget></user-widget>
-              <about-me-widget></about-me-widget>
-            </div>
-            <div class="col-lg-9 col-md-8 col-sm-12">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#projects" data-toggle="tab">Projects</a></li>
-                  <li><a href="#details" data-toggle="tab">My Details</a></li>
-                  <li><a href="#settings" data-toggle="tab">Settings</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div class="active tab-pane" id="projects">
-                    <project-panel></project-panel>
-                  </div><!-- /.tab-pane -->
 
-                  <div class="tab-pane" id="details">
-                    <user-detail-panel></user-detail-panel>
-                  </div><!-- /.tab-pane -->
-
-                  <div class="tab-pane" id="settings">
-                    <setting-panel></setting-panel>
-                  </div><!-- /.tab-pane -->
-                </div><!-- /.tab-content -->
-              </div>
-            </div>
-          </div>
+          <div class="error-page">
+            <h2 class="headline text-yellow"> 404</h2>
+            <div class="error-content">
+              <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+              <p>
+                We could not find the page you were looking for.
+                Meanwhile, you may <a href="index.html">return to dashboard</a> or try using the search form.
+              </p>
+              <!--form class="search-form">
+                <div class="input-group">
+                  <input type="text" name="search" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i></button>
+                  </div>
+                </div><!-- /.input-group --
+              </form-->
+            </div><!-- /.error-content -->
+          </div><!-- /.error-page -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
