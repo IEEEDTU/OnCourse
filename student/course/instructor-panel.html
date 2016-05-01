@@ -1,38 +1,26 @@
-
-<div ng-controller="instructorCtrl as instructor">
-
-	<div class="box-body no-padding">
-           
-            <h4>Assigned Instructor</h4>
-            <table class="table table-hover">
-              
-              <tbody>
-                
-                <tr>
-                  <td style="min-width:90px;">ID</td>
-                  <td>{{ instructor.faculty.dtuRegId }}</a></td>
-                </tr>
-                <tr>
-                  <td style="min-width:90px;">Name</td>
-                  <td>{{ instructor.faculty.name }}</a></td>
-                </tr>
-                <tr>
-                  <td style="min-width:90px;">Email Id</td>
-                  <td>{{ instructor.faculty.personalEmail }}</a></td>
-                </tr>
-                <tr>
-                  <td style="min-width:90px;">Designation</td>
-                  <td>{{ instructor.faculty.designation }}</a></td>
-                </tr>
-                <tr>
-                  <td style="min-width:90px;">Job type</td>
-                  <td>{{ instructor.faculty.jobType }}</a></td>
-                </tr>
-                <tr>
-                  <td style="min-width:90px;">Department</td>
-                  <td>{{ instructor.faculty.department }}</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<div class="row" ng-controller="instructorCtrl as instructor">
+  <div class="col-lg-6 col-md-12 col-sm-12 col-lg-offset-3">
+    <table class="table table-bordered">
+      <tr class="text-bold">
+        <td>Instructor Name:</td>
+        <td>{{ instructor.faculty.name }}</td>
+      </tr>
+      <tr>
+        <td>Designation:</td>
+        <td>{{ instructor.faculty.designation }}</td>
+      </tr>
+      <tr>
+        <td>Department:</td>
+        <td>{{ instructor.faculty.department }}</td>
+      </tr>
+      <tr>
+        <td>Email Address:</td>
+        <td><a href="mailto:{{ instructor.faculty.personalEmail }}" target="_blank">{{ instructor.faculty.personalEmail }}</a></td>
+      </tr>
+      <tr>
+        <td>Contact Number:</td>
+        <td>{{ instructor.faculty.personalMobile }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

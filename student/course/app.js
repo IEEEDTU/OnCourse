@@ -146,12 +146,12 @@ app.controller('descriptionCtrl', function(){
 		courseType: "Core",
 		courseName: "Object Oriented Programming",
 		description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-		credits: "4",
-		sessMaxMarks: "30",
-		endMaxMarks: "70",
-		maxMarks: "100",
-		minPassingMarks: "40",
-		semester: "3"
+		credits: 4,
+		sessMaxMarks: 30,
+		endMaxMarks: 70,
+		maxMarks: 100,
+		minPassingMarks: 40,
+		semester: 3
 	}
 		
 });
@@ -161,96 +161,88 @@ app.controller('curriculumCtrl', function(){
 	this.syllabus = [{
 		unitId: "Unit 1",
 		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-
 	},
 	{
 		unitId: "Unit 2",
 		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo . nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-
 	},
 	{
 		unitId: "Unit 3",
 		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-
 	}];
 });
 
 // Instructor Controller
 app.controller('instructorCtrl', function(){
 	this.faculty = {
-		dtuRegId: "DTU/CSE/030",
-		name: "ABC XYZ",
+		name: "Dr. Ruchika Malhotra",
 		personalEmail: "abc@gmail.com",
+		personalMobile: "+91-9999645456",
 		designation: "Associate professor",
-		jobType: "Permanent",
-		department: "CSE"
-	}
+		department: "Computer Science and Engineering Department"
+	};
 });
 
 // Resource Controller
 app.controller('resourceCtrl', function(){
-	this.resource = [{
-		resourceId: "1",
-		authors: "R.S. Pillai",
+	this.textBooks = [{
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
 		edition: "2",
-		publisher: "McGraw Hill",
-		bookName: "Data Structures"
+		publisher: "McGraw Hill"
 	},
 	{
-		resourceId: "2",
-		authors: "R.S. Pillai",
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
 		edition: "2",
-		publisher: "McGraw Hill",
-		bookName: "Data Structures"
+		publisher: "McGraw Hill"
 	},
 	{
-		resourceId: "3",
-		authors: "R.S. Pillai",
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
 		edition: "2",
-		publisher: "McGraw Hill",
-		bookName: "Data Structures"
+		publisher: "McGraw Hill"
 	}];
-	this.weblinks = [{
-		resourceId: "4",
-		link: "www.dropbox.com"
-	},
-	{
-		resourceId: "5",
-		link: "www.dropbox.com"
-	}];
-});
 
-// Assignment Controller
-app.controller('assignmentCtrl', function(){
-	this.done = [{
-		assignmentId: "1",
-		description : "Advanced Computers",
-		submitted: "10-12-2015"
+	this.referenceBooks = [{
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
+		edition: "2",
+		publisher: "McGraw Hill"
 	},
 	{
-		assignmentId: "2",
-		description: "Advanced Computers",
-		submitted: "11-12-2015"
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
+		edition: "2",
+		publisher: "McGraw Hill"
 	},
 	{
-		assignmentId: "3",
-		description: "Advanced Computers",
-		submitted: "20-12-2015"
+		bookName: "Data Structures",
+		authors: "R.S. Pillai, S.K. Saini",
+		edition: "2",
+		publisher: "McGraw Hill"
 	}];
-	this.pending = [{
-		assignmentId: "1",
-		description: "Advanced Computers",
-		dueDate: "10-12-2015"
+
+	this.publications = [{
+		title: "Intrusion Detection and Prevention",
+		authors: "Ashish Kamra",
+		organization: "IEEE",
+		publicationDate: "2014-08-13",
+		link: "www.google.com"
+	}];
+
+	this.documents = [{
+		source: "www.sites.google.com/dss/lecture1.pdf"
 	},
 	{
-		assignmentId: "2",
-		description: "Advanced Computers",
-		dueDate: "11-12-2015"
+		source: "www.sites.google.com/dss/lecture1.pdf"
+	}];
+
+	this.weblinks = [{
+		link: "www.wikipedia.com/data_structures"
 	},
 	{
-		assignmentId: "3",
-		description: "Advanced Computers",
-		dueDate: "20-12-2015"
+		link: "www.wikipedia.com/data_structures"
 	}];
 });
 

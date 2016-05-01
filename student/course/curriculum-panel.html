@@ -1,22 +1,8 @@
-
 <div ng-controller="curriculumCtrl as curriculum">
-
-	<div class="box-body no-padding" ng-repeat="syllabus1 in curriculum.syllabus">
-            <table class="table table-hover">
-              
-              <tbody>
-
-              	<tr>
-                  <td><b>{{ syllabus1.unitId }}<b></td>
-                  
-                </tr>
-                <tr>
-                  <td>{{ syllabus1.unitDescription }}</td>
-                	
-                </tr>
-                
-              </tbody>
-            </table><br>
-            
-          </div>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="unit in curriculum.syllabus">
+      <h4 class="list-group-item-heading text-bold">{{ unit.unitId }}</h4>
+      <p>{{ unit.unitDescription }}</p>
+    </li>
+  </ul>
 </div>
