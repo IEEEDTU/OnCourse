@@ -27,7 +27,7 @@
   }
 </style>
 
-<div class="nav-tabs-custom">
+<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl as assg">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab_1" data-toggle="tab">Assignments</a></li>
     <li><a href="#tab_2" data-toggle="tab">Assignment Grades</a></li>
@@ -43,34 +43,16 @@
           <th class="text-center cell-header" style="width: 70px;">Last Date for Submission</th>
           <th class="text-center cell-header">Comments or Notes</th>
         </tr>
-        <tr>
-          <td>SE301A</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>27-12-2016</td>
-          <td>Sent in PDF format</td>
+        
+        <tr ng-repeat="assDetails in assg.assignments">
+          <td>{{assDetails.assCode}}</td>
+          <td>{{assDetails.subject}}</td>
+          <td><a href="#">{{assDetails.assignment}}</a></td>
+          <td>{{assDetails.date}}</td>
+          <td>{{assDetails.comment}}</td>
         </tr>
-        <tr>
-          <td>SE301B</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>27-12-2016</td>
-          <td>Sent in PDF format</td>
-        </tr>
-        <tr>
-          <td>SE302A</td>
-          <td>SE 302</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>27-12-2016</td>
-          <td>Sent in PDF format</td>
-        </tr>
-        <tr>
-          <td>SE301C</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>27-12-2016</td>
-          <td>Sent in PDF format</td>
-        </tr>
+        
+       
       </table>
     </div>
     <!-- /.tab-pane -->
@@ -83,34 +65,16 @@
           <th class="text-center cell-header" style="width: 70px;">Grade</th>
           <th class="text-center cell-header">Status</th>
         </tr>
-        <tr>
-          <td>SE301A</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>A</td>
-          <td>Submitted</td>
+      
+     
+        <tr ng-repeat="assGrades in assg.assignmentGrades">
+          <td>{{assGrades.assCode}} </td>
+          <td>{{assGrades.subject}} </td>
+          <td><a href="#">{{assGrades.assignment}} </a></td>
+          <td>{{assGrades.grade}} </td>
+          <td>{{assGrades.status}} </td>
         </tr>
-        <tr>
-          <td>SE301B</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>-</td>
-          <td>To be evaluated</td>
-        </tr>
-        <tr>
-          <td>SE302A</td>
-          <td>SE 302</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>-</td>
-          <td>Not submitted</td>
-        </tr>
-        <tr>
-          <td>SE301C</td>
-          <td>SE 301</td>
-          <td><a href="#">assignment_12_02_2016.pdf</a></td>
-          <td>C</td>
-          <td>Submitted</td>
-        </tr>
+        
       </table>
     </div>
     <!-- /.tab-pane -->
