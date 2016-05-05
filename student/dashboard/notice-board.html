@@ -1,5 +1,5 @@
 <!-- notice board container -->
-<div class="box box-primary" ng-controller="noticeBoardCtrl as noticeBoard">
+<div class="box box-primary">
   <div class="box-header with-border">
     <i class="fa fa-newspaper-o"></i>
     <h3 class="box-title"> Notice Board </h3>
@@ -20,8 +20,9 @@
         <li class="pull-left" style="padding:10px">Date</li>
       </ul>
       <div class="tab-content no-padding">
+		  
         <!-- News panel -->
-        <div class="tab-pane active" id="news">
+		  <div class="tab-pane active" id="news" ng-controller="newsCtrl">
           <div class="box-body no-padding">
             <table class="table table-hover">
               <!--thead>
@@ -31,9 +32,9 @@
                 </tr>
               </thead-->
               <tbody>
-                <tr ng-repeat="news in noticeBoard.news">
-                  <td style="min-width:90px;">{{ news.date }}</td>
-                  <td><a href="#">{{ news.headline }}</a></td>
+                <tr ng-repeat="news in filteredNews">
+                  <td style="min-width:90px;">{{ news.fields.date }}</td>
+                  <td><a href="#">{{ news.fields.headline }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>
@@ -41,12 +42,18 @@
                 </tr-->
               </tbody>
             </table>
+			<pagination boundary-links="true" 
+			   max-size="5"
+			   items-per-page="5"
+			   total-items="15" 
+			   ng-model="currentPage" 
+			   ng-change="pageChanged()"></pagination>
           </div>
           <div class="box-footer clearfix" style="background-color:#3c8dbc;">
-            <ul class="pagination pagination-sm no-margin pull-right">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
+			<ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#" ng-click="setPage(1)">1</a></li>
+			  <li><a href="#" ng-click="setPage(2)">2</a></li>
+              <li><a href="#" ng-click="setPage(3)">3</a></li>
               <li><a href="#">See all &raquo;</a></li>
             </ul>
           </div>
@@ -54,7 +61,7 @@
         <!-- /News panel -->
 
         <!-- Notice panel -->
-        <div class="tab-pane" id="notice">
+		<div class="tab-pane" id="notice" ng-controller="noticesCtrl">
           <div class="box-body no-padding">
             <table class="table table-hover">
               <!--thead>
@@ -64,9 +71,9 @@
                 </tr>
               </thead-->
               <tbody>
-                <tr ng-repeat="notice in noticeBoard.notices">
-                  <td style="min-width:90px;">{{ notice.date }}</td>
-                  <td><a href="#">{{ notice.subject }}</a></td>
+                <tr ng-repeat="notice in filteredNotices">
+					<td style="min-width:90px;">{{ notice.fields.issueDate }}</td>
+					<td><a href="#">{{ notice.fields.subject }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>
@@ -75,19 +82,19 @@
               </tbody>
             </table>
           </div>
-          <div class="box-footer clearfix">
-            <ul class="pagination pagination-sm no-margin pull-right">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">See all &raquo;</a></li>
-            </ul>
+		  <div class="box-footer clearfix" style="background-color:#3c8dbc;">
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#" ng-click="setPage(1)">1</a></li>
+				<li><a href="#" ng-click="setPage(2)">2</a></li>
+				<li><a href="#" ng-click="setPage(3)">3</a></li>
+				<li><a href="#">See all &raquo;</a></li>
+			</ul>
           </div>
         </div>
         <!-- /Notice panel -->
 
         <!-- Event panel -->
-        <div class="tab-pane" id="event">
+		<div class="tab-pane" id="event" ng-controller="eventsCtrl">
           <div class="box-body no-padding">
             <table class="table table-hover">
               <!--thead>
@@ -97,9 +104,9 @@
                 </tr>
               </thead-->
               <tbody>
-                <tr ng-repeat="event in noticeBoard.events">
-                  <td style="min-width:90px;">{{ event.date }}</td>
-                  <td><a href="#">{{ event.eventName }}</a></td>
+                <tr ng-repeat="event in filteredEvents">
+					<td style="min-width:90px;">{{ event.fields.startDateTime }}</td>
+					<td><a href="#">{{ event.fields.eventName }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>
@@ -108,13 +115,13 @@
               </tbody>
             </table>
           </div>
-          <div class="box-footer clearfix">
-            <ul class="pagination pagination-sm no-margin pull-right">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">See all &raquo;</a></li>
-            </ul>
+		  <div class="box-footer clearfix" style="background-color:#3c8dbc;">
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#" ng-click="setPage(1)">1</a></li>
+				<li><a href="#" ng-click="setPage(2)">2</a></li>
+				<li><a href="#" ng-click="setPage(3)">3</a></li>
+				<li><a href="#">See all &raquo;</a></li>
+			</ul>
           </div>
         </div>
         <!-- /Event panel -->
