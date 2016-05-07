@@ -64,3 +64,27 @@ app.controller('navbarCtrl', function() {
 	}];
 	*/
 });
+
+app.controller('sidebarCtrl', function($scope) {
+	console.log("app name = " + app.name);
+	var appName = app.name;
+	var i = 0;
+	switch(appName)
+	{
+		case "profiler":    i = 1;
+						  break;
+		case "communique":  i = 2;
+						  break;
+		case "workspace":   i = 3;
+						  break;
+		case "course":      i = 4;
+						  break;
+		case "assessment":  i = 5;
+						  break;
+		case "newsfeed":    i = 6;
+						  break;
+		default: i = 0;
+	}
+	$scope.tabSelected = i;
+	console.log(i + " " + $scope.tabSelected);
+});
