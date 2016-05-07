@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+.message-box{
+  width:260px;
+  height:290px;
+  position:fixed;
+  bottom:0;
+  right:300px;
+  z-index:5000;
+  padding:0;
+  margin:0;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+  font-size:12px;
+  line-height:1.2em;
+}
+.message-box .panel-heading{
+	height:30px;
+	margin:0;
+	padding:5px 10px;
+	font-weight:bold;
+	cursor:pointer;
+}
+.message-box .panel-body{
+	background-color:#ddd;
+	height:100%;
+}
+.message-box .panel-footer{
+	position:absolute;
+	bottom:0;
+	padding:0;
+	width:100%;
+}
+.message-box .panel-footer input[type="text"]{
+  width:100%;
+  margin:0;
+  padding:5px;
+  border:none;
+}

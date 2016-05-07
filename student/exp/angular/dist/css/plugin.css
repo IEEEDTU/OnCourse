@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+
+.card{
+  width:100%;
+  margin-top:10px;
+  border-radius:4px;
+/*  padding:0.625em;*/
+  position:relative;
+  background:#fff;
+  -webkit-box-shadow:1px 2px 1px rgba(0,0,0,0.25);
+  		  box-shadow:1px 2px 1px rgba(0,0,0,0.25);  
+}
+.card-muted{
+  cursor:default;
+}
+.card:hover{
+  z-index:2;
+  color:#fff;
+  background-color:#337ab7;
+  border-color:#337ab7;
+}
+.card-highlight {
+  font-variant:small-caps;
+  font-family:"Roboto Slab";
+  font-weight:500;
+}
+
+.card-container{
+  width:100%;
+}
+.card-container td{
+  padding:0 5px;
+}
+
+.course-section{
+  padding:15px;
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.course-section .sub-header{
+  font-family:Calibri;
+  font-weight:bold;
+}
+.course-section .table-lg{
+  width:100%;
+}
+.course-section .table-sm{
+  width:60%;
+  margin:0 20%;
+}
+.course-section td, .course-section th{
+  border:thin solid #E0E0E0;
+  padding:5px;
+}
+.course-section #assignments td, .course-section #assignments th{
+  font-size:12.5px;
+}
+.course-section .col1{
+  width:70px;
+}
+.course-section .col2{
+  width:130px;
+}
+.course-section .col3{
+  width:200px;
+}
+.course-section .col4{
+  width:auto;
+}
+.course-section input[type="submit"]{
+  font-family:Arial, Helvetica, sans-serif;
+  border:none;
+  margin-top:5px;
+}
+.course-section input[type="file"]::-webkit-file-upload-button{
+  padding:1px 5px;
+  font-size:12px;
+  line-height:1.5;
+  border-radius:3px;
+  color:#fff;
+  background-color:#337ab7;
+  /*border-color:#2e6da4;*/
+  border:none;
+}
+.course-section input[type="file"]::-webkit-file-upload-button:hover{
+  color:#fff;
+  background-color:#286090;
+  /*border-color:#204d74;*/
+}
+.course-section input[type="submit"][disabled]{
+	cursor:not-allowed;
+	background-color:rgba(0,0,0,0.5);
+}
+
