@@ -10,12 +10,12 @@
       <div class="panel box box-primary" ng-repeat="course in oddCourses.courses">
         <div class="box-header with-border">
           <h4 class="box-title">
-            <a data-toggle="collapse" data-parent="#odd-courses" href="#collapse{{ $index }}">
+            <a data-toggle="collapse" data-parent="#odd-courses" href="#collapse1{{ $index }}">
               {{ course.courseCode }} - {{ course.courseName }}
             </a>
           </h4>
         </div>
-        <div id="collapse{{ $index }}" class="panel-collapse collapse" ng-class="{in : $index==0}">
+        <div id="collapse1{{ $index }}" class="panel-collapse collapse" ng-class="{in : $index==0}">
           <div class="box-body">
             {{ course.description }}
           </div>
