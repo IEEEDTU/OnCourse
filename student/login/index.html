@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="xcms">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,14 +24,14 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition login-page">
+  <body class="hold-transition login-page" ng-controller='mainCtrl'>
     <div class="login-box">
       <div class="login-logo">
         <a href="#"><i class="ion ion-aperture"></i><b>nCourse</b></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="#" method="post">
+        <form action="../dashboard/" method="post">
           <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -49,7 +49,7 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+				<button type="submit" ng-click="setCookie()" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->
           </div>
         </form>
@@ -68,6 +68,8 @@
 
     <!-- jQuery 2.2.0 -->
     <script src="../../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+	<script src="../../assets/angular/angular.min.js"></script>
+	<script src="../../assets/angular/angular-cookies.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
