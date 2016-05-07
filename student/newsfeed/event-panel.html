@@ -1,0 +1,40 @@
+<div class="box box-danger" style="border-color:#605ca8;" ng-controller="eventModalCtrl">
+  <div class="box-header with-border">
+    <i class="fa fa-calendar"></i>
+    <h3 class="box-title">Events</h3>
+    <div class="box-tools pull-right">
+      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+    </div>
+  </div><!-- /.box-header -->
+  <div class="box-body" ng-controller="eventCtrl as event">
+    <ul class="events-list event-list-in-box">
+      <!-- Event item -->
+      <li class="item" ng-repeat="event in event.events">
+        <a href="#" ng-click="displayEventDialog(event)">
+          <div class="event-date-box">
+            <div class="event-date">{{event.startDateTime.day}}</div>
+            <div class="event-month">{{event.startDateTime.month}}</div>
+          </div>
+          <div class="event-info">
+            <p class="event-title">{{event.eventName}}</p>
+            <p class="event-venue"><i class="fa fa-map-marker"></i> {{event.venue}}</p>
+          </div>
+        </a>
+      </li>
+      <!-- END of event item -->
+      
+    </ul>
+  </div><!-- /.box-body -->
+  <!-- box-footer -->
+  <div class="box-footer clearfix bg-purple">
+    <button class="btn btn-sm btn-default" ng-click="createEventDialog()">Create Event</button>
+    <ul class="pagination pagination-sm no-margin pull-right">
+      <li><a href="#">&laquo;</a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div><!-- /.box-footer -->
+</div><!-- /.box -->

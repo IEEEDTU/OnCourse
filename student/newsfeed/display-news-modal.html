@@ -1,0 +1,23 @@
+<div class="ng-scope">
+  <div class="modal-header bg-green">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{ news.headline }}</h4>
+  </div>
+  <div class="modal-body">
+    <img class="display-image" src="{{ news.image }}" >
+    <p class="text-justify">{{ news.description }}</p>
+    Source: <a href="{{ news.link }}" target="_blank">{{ news.link }}</a>
+  </div>
+  <div class="modal-footer bg-green">
+    <button type="button" class="btn btn-default pull-right" ng-click="close()">Close</button>
+    <!--button type="button" class="btn btn-primary">Save changes</button-->
+  </div>
+</div>
+
+<style>
+  .display-image{
+    margin: 30px auto;
+    display: block;
+  }
+</style>
+<script src="../js/custom.js"></script>
