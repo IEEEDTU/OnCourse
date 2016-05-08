@@ -42,20 +42,20 @@
                 </tr-->
               </tbody>
             </table>
-			<pagination boundary-links="true" 
-			   max-size="5"
-			   items-per-page="5"
-			   total-items="15" 
-			   ng-model="currentPage" 
-			   ng-change="pageChanged()"></pagination>
           </div>
           <div class="box-footer clearfix" style="background-color:#3c8dbc;">
-			<ul class="pagination pagination-sm no-margin pull-right">
-              <li><a href="#" ng-click="setPage(1)">1</a></li>
-			  <li><a href="#" ng-click="setPage(2)">2</a></li>
-              <li><a href="#" ng-click="setPage(3)">3</a></li>
-              <li><a href="#">See all &raquo;</a></li>
-            </ul>
+			<pagination class="pagination-sm no-margin pull-right"
+				max-size="maxSize"
+				items-per-page="itemsPerPage"
+				total-items="totalItems" 
+				page="currentPage" 
+				ng-change="pageChanged()">
+			</pagination>
+			<!--<p>
+				total Items: {{totalItems}}<br />
+				Items per page: {{itemsPerPage}}<br />
+				Current Page: {{currentPage}}
+			</p>-->
           </div>
         </div>
         <!-- /News panel -->
@@ -83,12 +83,18 @@
             </table>
           </div>
 		  <div class="box-footer clearfix" style="background-color:#3c8dbc;">
-			<ul class="pagination pagination-sm no-margin pull-right">
-				<li><a href="#" ng-click="setPage(1)">1</a></li>
-				<li><a href="#" ng-click="setPage(2)">2</a></li>
-				<li><a href="#" ng-click="setPage(3)">3</a></li>
-				<li><a href="#">See all &raquo;</a></li>
-			</ul>
+			<pagination class="pagination-sm no-margin pull-right"
+				max-size="maxSize"
+				items-per-page="itemsPerPage"
+				total-items="totalItems" 
+				page="currentPage" 
+				ng-change="pageChanged()">
+			</pagination>
+			<!--<p>
+				total Items: {{totalItems}}<br />
+				Items per page: {{itemsPerPage}}<br />
+				Current Page: {{currentPage}}
+			</p>-->
           </div>
         </div>
         <!-- /Notice panel -->
@@ -116,12 +122,18 @@
             </table>
           </div>
 		  <div class="box-footer clearfix" style="background-color:#3c8dbc;">
-			<ul class="pagination pagination-sm no-margin pull-right">
-				<li><a href="#" ng-click="setPage(1)">1</a></li>
-				<li><a href="#" ng-click="setPage(2)">2</a></li>
-				<li><a href="#" ng-click="setPage(3)">3</a></li>
-				<li><a href="#">See all &raquo;</a></li>
-			</ul>
+			<pagination class="pagination-sm no-margin pull-right"
+				max-size="maxSize"
+				items-per-page="itemsPerPage"
+				total-items="totalItems" 
+				page="currentPage" 
+				ng-change="pageChanged()">
+			</pagination>
+			<!--<p>
+				total Items: {{totalItems}}<br />
+				Items per page: {{itemsPerPage}}<br />
+				Current Page: {{currentPage}}
+			</p>-->
           </div>
         </div>
         <!-- /Event panel -->

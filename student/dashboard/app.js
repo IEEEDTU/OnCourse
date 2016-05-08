@@ -40,43 +40,62 @@ app.directive('quickLinks', function(){
 	};
 });
 
-app.controller('newsCtrl', function($scope, $http){
-	$scope.news = {};
-/*	var config = {
-		headers: {
-        	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-        	'Accept': 'application/json',
-        	'Content-Type': 'application/x-www-form-urlencoded',
-    	}
-    };
-*/
-	$http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNews?rowsPerPage=" + 15 + "&pageNo=" + 1)
-	.then(function(response){
-		if(response.data.hasOwnProperty('exception')){
-			alert(response.data.exception);
-		}else{
-			$scope.news = response.data.news;
-			for(i=0;i<5;i++){
-				$scope.filteredNews[i] = $scope.news[i];
-			}
+app.factory('newsService', function($http) {
+	return {
+		getNews : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNews?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
 		}
-	});
+	}
+});
 
-	$scope.totalItems = $scope.news.length;
-	$scope.itemsPerPage = 5;
-	$scope.currentPage = 1;
+app.factory('noticesService', function($http) {
+	return {
+		getNotices : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNotices?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+app.factory('eventsService', function($http) {
+	return {
+		getEvents : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreEvents?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+app.controller('newsCtrl', function($scope, newsService){
+	$scope.news = [];
+// 	var config = {
+// 		headers: {
+//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+//         	'Accept': 'application/json',
+//         	'Content-Type': 'application/x-www-form-urlencoded',
+//     	}
+//     };
+	$scope.filteredNews = [];
+	$scope.totalItems = 0;
 	
-	$scope.maxSize = 5;
-	$scope.bigTotalItems = 175;
-	$scope.bigCurrentPage = 1;
-	
-	$scope.setPage = function (pageNo) {
-		$scope.currentPage = pageNo;
-	};
-	
-	$scope.pageChanged = function() {
-		console.log('Page changed to: ' + $scope.currentPage);
-	};
+	newsService.getNews().then(function(news){
+		if(news.hasOwnProperty('exception')){
+			alert(news.exception);
+		}else{
+			$scope.news = news.news;
+		}
+		$scope.totalItems = $scope.news.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(news);
+	});
 	
 	$scope.pageCount = function () {
 		return Math.ceil($scope.news.length / $scope.itemsPerPage);
@@ -85,44 +104,38 @@ app.controller('newsCtrl', function($scope, $http){
 	$scope.$watch('currentPage + itemsPerPage', function() {
 		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
 				  end = begin + $scope.itemsPerPage;
-		$scope.filteredNews = {};
-		for(i=begin;i<end;i++){
-			$scope.filteredNews[i] = $scope.news[i];
-		}
-		
+				  console.log('watch news : ' + $scope.news);
+				  $scope.filteredNews = $scope.news.slice(begin,end);		
 	});
 	
 });
 
-app.controller('noticesCtrl', function($scope, $http){
-	$scope.notices = {};
-	$http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNotices?rowsPerPage=" + 15 + "&pageNo=" + 1)
-	.then(function(response){
-		if(response.data.hasOwnProperty('exception')){
-			alert(response.data.exception);
+app.controller('noticesCtrl', function($scope, noticesService){
+	$scope.notices = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	$scope.filteredNotices = [];
+	$scope.totalItems = 0;
+	
+	noticesService.getNotices().then(function(notices){
+		if(notices.hasOwnProperty('exception')){
+			alert(notices.exception);
 		}else{
-			$scope.notices = response.data.notices;
-			for(i=0;i<5;i++){
-				$scope.filteredNotices[i] = $scope.notices[i];
-			}
+			$scope.notices = notices.notices;
 		}
+		$scope.totalItems = $scope.notices.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(notices);
 	});
-	
-	$scope.totalItems = $scope.notices.length;
-	$scope.itemsPerPage = 5;
-	$scope.currentPage = 1;
-	
-	$scope.maxSize = 5;
-	$scope.bigTotalItems = 175;
-	$scope.bigCurrentPage = 1;
-	
-	$scope.setPage = function (pageNo) {
-		$scope.currentPage = pageNo;
-	};
-	
-	$scope.pageChanged = function() {
-		console.log('Page changed to: ' + $scope.currentPage);
-	};
 	
 	$scope.pageCount = function () {
 		return Math.ceil($scope.notices.length / $scope.itemsPerPage);
@@ -131,44 +144,38 @@ app.controller('noticesCtrl', function($scope, $http){
 	$scope.$watch('currentPage + itemsPerPage', function() {
 		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
 				  end = begin + $scope.itemsPerPage;
-				  
-		$scope.filteredNotices = {};
-		for(i=begin;i<end;i++){
-			$scope.filteredNotices[i] = $scope.notices[i];
-		}
+				  console.log('watch notices : ' + $scope.notices);
+				  $scope.filteredNotices = $scope.notices.slice(begin,end);		
 	});
 	
 });
 
-app.controller('eventsCtrl', function($scope, $http){
-	$scope.events = {};
-	$http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreEvents?rowsPerPage=" + 15 + "&pageNo=" + 1)
-	.then(function(response){
-		if(response.data.hasOwnProperty('exception')){
-			alert(response.data.exception);
+app.controller('eventsCtrl', function($scope, eventsService){
+	$scope.events = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	$scope.filteredEvents = [];
+	$scope.totalItems = 0;
+	
+	eventsService.getEvents().then(function(events){
+		if(events.hasOwnProperty('exception')){
+			alert(events.exception);
 		}else{
-			$scope.events = response.data.events;
-			for(i=0;i<5;i++){
-				$scope.filteredEvents[i] = $scope.events[i];
-			}
+			$scope.events = events.events;
 		}
+		$scope.totalItems = $scope.events.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(events);
 	});
-	
-	$scope.totalItems = $scope.events.length;
-	$scope.itemsPerPage = 5;
-	$scope.currentPage = 1;
-	
-	$scope.maxSize = 5;
-	$scope.bigTotalItems = 175;
-	$scope.bigCurrentPage = 1;
-	
-	$scope.setPage = function (pageNo) {
-		$scope.currentPage = pageNo;
-	};
-	
-	$scope.pageChanged = function() {
-		console.log('Page changed to: ' + $scope.currentPage);
-	};
 	
 	$scope.pageCount = function () {
 		return Math.ceil($scope.events.length / $scope.itemsPerPage);
@@ -177,11 +184,8 @@ app.controller('eventsCtrl', function($scope, $http){
 	$scope.$watch('currentPage + itemsPerPage', function() {
 		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
 				  end = begin + $scope.itemsPerPage;
-				  
-		$scope.filteredEvents = {};
-		for(i=begin;i<end;i++){
-			$scope.filteredEvents[i] = $scope.events[i];
-		}
+				  console.log('watch events : ' + $scope.events);
+				  $scope.filteredEvents = $scope.events.slice(begin,end);		
 	});
 	
 });
