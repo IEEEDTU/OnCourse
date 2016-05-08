@@ -42,6 +42,14 @@ app.directive('quickLinks', function(){
 
 app.controller('newsCtrl', function($scope, $http){
 	$scope.news = {};
+/*	var config = {
+		headers: {
+        	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+        	'Accept': 'application/json',
+        	'Content-Type': 'application/x-www-form-urlencoded',
+    	}
+    };
+*/
 	$http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNews?rowsPerPage=" + 15 + "&pageNo=" + 1)
 	.then(function(response){
 		if(response.data.hasOwnProperty('exception')){

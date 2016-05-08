@@ -10,6 +10,7 @@ app.controller("newsModalCtrl", ['$scope', '$modal', '$log',
             $scope.message = "Show Form Button Clicked";
             console.log($scope.message);
 			$scope.news = news;
+            console.log(news.fields);
 
             var modalInstance = $modal.open({
                 templateUrl: 'display-news-modal.html',
@@ -41,6 +42,7 @@ app.controller("eventModalCtrl", ['$scope', '$modal', '$log',
             $scope.message = "Show Form Button Clicked";
             console.log($scope.message);
 			$scope.event = event;
+			console.log(event.fields);
 
             var modalInstance = $modal.open({
                 templateUrl: 'display-event-modal.html',

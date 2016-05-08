@@ -4,19 +4,39 @@
     <h4 class="modal-title">{{ event.eventName }}</h4>
   </div>
   <div class="modal-body">
-    <img class="display-image" src="{{ event.image }}" >
+    <img class="display-image" src="{{ event.image }}">
+
     <p class="text-justify">{{ event.description }}</p>
+
     <p class="help-block">Organiser: {{ event.organisedBy }}</p>
     <ul class="list-unstyled row">
-      <li class="col-md-6 col-sm-6"><i class="fa fa-calendar"></i> Start Date: {{ event.startDateTime.day }} - {{ event.startDateTime.month }} - {{ event.startDateTime.year }}</li>
-      <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i> Start Time: {{ event.startDateTime.hour }}:{{ event.startDateTime.minute }}</li>
-      <li class="col-md-6 col-sm-6"><i class="fa fa-calendar"></i> End Date: {{ event.endDateTime.day }} - {{ event.endDateTime.month }} - {{ event.endDateTime.year }}</li>
-      <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i> End Time: {{ event.endDateTime.hour }}:{{ event.endDateTime.minute }}</li>
-      <li class="col-md-12 col-sm-12"><i class="fa fa-map-marker"></i> Venue: {{ event.venue }}</li>
-      <li class="col-md-12 col-sm-12"><i class="ion-ios-world-outline"></i> Website: <a href="{{ event.website }}" target="_blank">{{ event.website }}</a></li>
-      <li class="col-md-12 col-sm-12"><i class="fa fa-facebook-official"></i> Facebook Event: <a href="{{ event.fbEvent }}" target="_blank">{{ event.fbEvent }}</a></li>
-      <li class="col-md-6 col-sm-6"><i class="fa fa-mobile"></i> Contact: {{ event.mobile }}</li>
-      <li class="col-md-6 col-sm-6"><i class="fa fa-mobile"></i> Email: {{ event.email }}</li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-calendar"></i>
+        Start Date: {{ event.startDateTime.day }} - {{ event.startDateTime.month }} - {{ event.startDateTime.year }}
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i>
+        Start Time: {{ event.startDateTime.hour }}:{{ event.startDateTime.minute }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event.endDateTime"><i class="fa fa-calendar"></i>
+        End Date: {{ event.endDateTime.day }} - {{ event.endDateTime.month }} - {{ event.endDateTime.year }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event.endDateTime"><i class="fa fa-clock-o"></i>
+        End Time: {{ event.endDateTime.hour }}:{{ event.endDateTime.minute }}
+      </li>
+      <li class="col-md-12 col-sm-12"><i class="fa fa-map-marker"></i>
+        Venue: {{ event.venue }}
+      </li>
+      <li class="col-md-12 col-sm-12" ng-show="event.website"><i class="ion-ios-world-outline"></i>
+        Website: <a href="{{ event.website }}" target="_blank">{{ event.website }}</a>
+      </li>
+      <li class="col-md-12 col-sm-12" ng-show="event.fbEvent"><i class="fa fa-facebook-official"></i>
+        Facebook Event: <a href="{{ event.fbEvent }}" target="_blank">{{ event.fbEvent }}</a>
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-phone"></i>
+        Contact: {{ event.mobile }}
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-envelope"></i>
+        Email: {{ event.email }}
+      </li>
     </ul>
   </div>
   <div class="modal-footer bg-purple">
@@ -27,8 +47,8 @@
 
 <style>
   .display-image{
-    margin: 30px auto;
-    display: block;
+  margin: 30px auto;
+  display: block;
   }
 </style>
 <script src="../js/custom.js"></script>

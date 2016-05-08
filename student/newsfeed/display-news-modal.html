@@ -4,9 +4,9 @@
     <h4 class="modal-title">{{ news.headline }}</h4>
   </div>
   <div class="modal-body">
-    <img class="display-image" src="{{ news.image }}" >
+    <img class="display-image" src="{{ news.image }}" ng-show="news.image">
     <p class="text-justify">{{ news.description }}</p>
-    Source: <a href="{{ news.link }}" target="_blank">{{ news.link }}</a>
+    <span ng-show="news.link">Source: <a href="{{ news.link }}" target="_blank">{{ news.link }}</a></span>
   </div>
   <div class="modal-footer bg-green">
     <button type="button" class="btn btn-default pull-right" ng-click="close()">Close</button>
