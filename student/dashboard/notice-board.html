@@ -23,7 +23,7 @@
 		  
         <!-- News panel -->
 		  <div class="tab-pane active" id="news" ng-controller="newsCtrl">
-          <div class="box-body no-padding">
+          <div class="box-body no-padding" ng-controller="newsModalCtrl">
             <table class="table table-hover">
               <!--thead>
                 <tr>
@@ -34,7 +34,7 @@
               <tbody>
                 <tr ng-repeat="news in filteredNews">
                   <td style="min-width:90px;">{{ news.fields.date }}</td>
-                  <td><a href="#">{{ news.fields.headline }}</a></td>
+                  <td><a href="#" ng-click="displayNewsDialog(news)">{{ news.fields.headline }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>
@@ -73,7 +73,7 @@
               <tbody>
                 <tr ng-repeat="notice in filteredNotices">
 					<td style="min-width:90px;">{{ notice.fields.issueDate }}</td>
-					<td><a href="#">{{ notice.fields.subject }}</a></td>
+					<td><a href="#" target="_blank">{{ notice.fields.subject }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>
@@ -105,8 +105,8 @@
               </thead-->
               <tbody>
                 <tr ng-repeat="event in filteredEvents">
-					<td style="min-width:90px;">{{ event.fields.startDateTime }}</td>
-					<td><a href="#">{{ event.fields.eventName }}</a></td>
+                  <td style="min-width:90px;">{{ event.fields.startDateTime }}</td>
+                  <td><a href="#" ng-click="displayEventDialog(event)">{{ event.fields.eventName }}</a></td>
                 </tr>
                 <!--tr>
                   <td>11-7-2014</td>

@@ -6,7 +6,7 @@ c. Calendar Widget
 d. Quick Links
 ---------------------------------------*/
 
-var app = angular.module('dashboard', ['cms']);
+var app = angular.module('dashboard', ['cms', 'modalApp']);
 
 // Notice Board ------------------------
 app.directive('noticeBoard', function(){

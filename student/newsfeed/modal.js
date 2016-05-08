@@ -1,7 +1,7 @@
 var app = angular.module('modalApp', ['ui.bootstrap']);
 
 /*----- Modal Controllers -----*/
-// For displaying news -----------------
+// For displaying & creating  news -----------------
 app.controller("newsModalCtrl", ['$scope', '$modal', '$log',
 
     function ($scope, $modal, $log) {
