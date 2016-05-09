@@ -32,5 +32,15 @@ app.directive('composeMailPanel', function(){
 });
 
 // Mailbox Controller
-app.controller('mailboxCtrl', function(){
-});
+app.controller('mailboxCtrl', [ '$scope', '$http', '$window', function($scope, $http, $window){
+	$scope.mail = {};
+	$scope.sendMail = function(){
+		console.log($scope.mail);
+		$window.location.href = "http://localhost:8080?to=" + $scope.mail.to + "&subject=" + $scope.mail.subject + "&message_text=" + $scope.mail.message_text;
+// 		$http.get("http://localhost:8080?to=" + $scope.mail.to + "&subject=" + $scope.mail.subject + "&message_text=" + $scope.mail.messageText)
+// 		.then(function(response){
+// 			alert(response.data);
+// 		});
+	}
+	
+}]);
