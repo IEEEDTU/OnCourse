@@ -7,7 +7,7 @@ d. User Details Panel
 e. Setting Panel
 ---------------------------------------*/
 
-var app = angular.module('profiler', ['cms']);
+var app = angular.module('profiler', ['cms', 'modalApp']);
 
 // User Widget ------------------------
 app.directive('userWidget', function(){

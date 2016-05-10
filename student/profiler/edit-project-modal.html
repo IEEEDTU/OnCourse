@@ -1,0 +1,95 @@
+<div class="modal-header bg-light-blue">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Add New Project</h3>
+</div>
+<form name="form.projectForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Project Title -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Project Title*</label>
+      <input type="text" name="title" class="form-control" ng-model="project.title" required>
+
+      <p ng-show="form.projectForm.title.$invalid && !form.projectForm.title.$pristine" class="help-block">Project
+        title is required.</p>
+    </div>
+
+    <!-- Project Description -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Project Description*</label>
+      <textarea name="description" class="form-control" ng-model="project.description" ng-minlength="10" ng-maxlength="4000"
+                required></textarea>
+
+      <p ng-show="form.projectForm.description.$error.minlength  && !form.projectForm.description.$pristine"
+         class="help-block">Enter a valid description.</p>
+
+      <p ng-show="form.projectForm.description.$error.maxlength && !form.projectForm.description.$pristine"
+         class="help-block">Description is too long.</p>
+    </div>
+
+    <!-- Organiser -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Highlighting Text*</label>
+      <input type="text" name="highlight" class="form-control" ng-model="project.highlight" required>
+
+      <p ng-show="form.projectForm.highlight.$invalid && !form.projectForm.highlight.$pristine" class="help-block">Enter
+        any highlighting text like conference name, supervisor name, etc.</p>
+    </div>
+
+    <div class="row col-lg-12 col-md-12 col-sm-12">
+      <!-- Start Date -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>Start Date*</label>
+        <input type="date" name="startDate" class="form-control" ng-model="project.startDate" required>
+
+        <p ng-show="form.projectForm.startDate.$invalid && !form.projectForm.startDate.$pristine" class="help-block">
+          Enter
+          start date.</p>
+      </div>
+
+      <!-- End Date -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>End Date</label>
+        <input type="date" name="endDate" class="form-control" ng-model="project.endDate">
+
+        <!--p ng-show="form.projectForm.endDate.$invalid && !form.projectForm.endDate.$pristine" class="help-block">End date
+          should be greater than start date.</p-->
+      </div>
+    </div>
+
+    <!-- Project Type -->
+    <div class="row col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>Project Type</label>
+        <select name="projectType" class="form-control" ng-model="project.projectType">
+          <option>Major</option>
+          <option>Minor</option>
+          <option>Research</option>
+          <option>Internship</option>
+          <option>Training</option>
+        </select>
+
+        <p ng-show="form.projectForm.projectType.$invalid && !form.projectForm.projectType.$pristine"
+           class="help-block">
+          Select a project type.</p>
+      </div>
+
+      <!-- Team Size -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>Team Size</label>
+        <input type="number" name="teamSize" class="form-control" ng-model="project.teamSize" value="1" ng-min="1">
+
+        <p ng-show="form.projectForm.teamSize.$invalid && !form.projectForm.teamSize.$pristine" class="help-block">Enter
+          team size.</p>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+    <!--projectName description image organisedBy startDateTime endDateTime website fbEvent venue-->
+  </div>
+  <div class="modal-footer bg-light-blue">
+    <button type="submit" class="btn btn-success" ng-disabled="form.projectForm.$invalid">Submit</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

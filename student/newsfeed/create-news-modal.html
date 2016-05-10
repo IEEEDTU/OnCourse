@@ -16,7 +16,7 @@
     <!-- News Description -->
     <div class="form-group col-lg-12 col-md-12 col-sm-12">
       <label>Description*</label>
-      <textarea name="description" class="form-control" ng-model="description" ng-minlength="10" ng-maxlength="4000"
+      <textarea name="description" class="form-control" ng-model="news.description" ng-minlength="10" ng-maxlength="4000"
                 required></textarea>
 
       <p ng-show="form.newsForm.description.$error.minlength  && !form.newsForm.description.$pristine"
