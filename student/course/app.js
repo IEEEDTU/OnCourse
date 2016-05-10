@@ -9,8 +9,7 @@ i. 	 Course Description
 ii.  Course Curriculum
 iii. Instructor
 iv.  Resources
-v. 	 Assignments
-vi.  Discussion
+v. 	 Discussion
 ---------------------------------------*/
 
 var app = angular.module('course', ['cms']);
@@ -120,14 +119,6 @@ app.directive('resourcePanel', function(){
 	return {
 		restrict: 'E',
 		templateUrl: 'resource-panel.html'
-	};
-});
-
-// Assignment Panel ------------------------
-app.directive('assignmentPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'assignment-panel.html'
 	};
 });
 
