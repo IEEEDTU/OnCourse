@@ -10,10 +10,10 @@
   </div>
   <!-- /.box-header -->
   <div class="box-body">
-    <ul class="todo-list">
+    <ul class="todo-list ui-sortable">
       <li>
         <!-- drag handle -->
-        <span class="handle">
+        <span class="handle ui-sortable-handle">
           <i class="fa fa-ellipsis-v"></i>
           <i class="fa fa-ellipsis-v"></i>
         </span>
@@ -30,7 +30,7 @@
         </div>
       </li>
       <li>
-        <span class="handle">
+        <span class="handle ui-sortable-handle">
           <i class="fa fa-ellipsis-v"></i>
           <i class="fa fa-ellipsis-v"></i>
         </span>
@@ -43,7 +43,7 @@
         </div>
       </li>
       <li>
-        <span class="handle">
+        <span class="handle ui-sortable-handle">
           <i class="fa fa-ellipsis-v"></i>
           <i class="fa fa-ellipsis-v"></i>
         </span>
@@ -110,3 +110,14 @@
     </div>
   </div>
 </div><!-- /.box -->
+
+
+<script>
+  //jQuery UI sortable for the todo list
+  $(".todo-list").sortable({
+    placeholder: "sort-highlight",
+    handle: ".handle",
+    forcePlaceholderSize: true,
+    zIndex: 999999
+  });
+</script>
