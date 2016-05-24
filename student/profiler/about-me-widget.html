@@ -1,10 +1,11 @@
 <!-- About Me Box -->
-<div class="box box-primary">
+<div class="box box-primary" ng-controller="aboutModalCtrl">
   <div class="box-header with-border">
     <h3 class="box-title">About Me</h3>
     <!-- tools box -->
     <div class="box-tools pull-right">
-      <button class="btn btn-box-tool" title="Edit" style="font-size:16px;"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-box-tool" title="Edit" ng-click="editAboutDialog(details)" style="font-size:16px;"><i
+              class="fa fa-edit"></i></button>
     </div>
   </div>
   <!-- /.box-header -->

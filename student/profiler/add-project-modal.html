@@ -37,17 +37,16 @@
 
     <div class="row col-lg-12 col-md-12 col-sm-12">
       <!-- Start Date -->
-      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <label>Start Date*</label>
         <input type="date" name="startDate" class="form-control" ng-model="project.startDate" required>
 
         <p ng-show="form.projectForm.startDate.$invalid && !form.projectForm.startDate.$pristine" class="help-block">
-          Enter
-          start date.</p>
+          Enter start date.</p>
       </div>
 
       <!-- End Date -->
-      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <label>End Date</label>
         <input type="date" name="endDate" class="form-control" ng-model="project.endDate">
 
@@ -58,7 +57,7 @@
 
     <!-- Project Type -->
     <div class="row col-lg-12 col-md-12 col-sm-12">
-      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <label>Project Type</label>
         <select name="projectType" class="form-control" ng-model="project.projectType">
           <option>Major</option>
@@ -74,7 +73,7 @@
       </div>
 
       <!-- Team Size -->
-      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <label>Team Size</label>
         <input type="number" name="teamSize" class="form-control" ng-model="project.teamSize" value="1" ng-min="1">
 
