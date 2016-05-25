@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Add Document</h3>
+</div>
+<form name="form.documentForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Document Link -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Document Link*</label>
+      <input type="file" name="document" class="form-control" ng-model="document.document" valid-file required>
+
+      <p ng-show="form.documentForm.document.$invalid && !form.documentForm.document.$pristine" class="help-block">
+        Select a valid file.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" ng-disabled="form.documentForm.$invalid">Submit</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

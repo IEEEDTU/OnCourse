@@ -1,0 +1,55 @@
+<style>
+  .box-purple{
+    border-top-color: #605ca8;
+  }
+</style>
+
+<!-- create announcement widget -->
+<div class="box box-purple">
+  <div class="box-header">
+    <i class="fa fa-bullhorn"></i>
+
+    <h3 class="box-title">Make Announcement</h3>
+    <!-- tools box -->
+    <div class="pull-right box-tools">
+      <button class="btn bg-purple btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      <button class="btn bg-purple btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+      <!--button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i
+              class="fa fa-minus"></i></button>
+      <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i
+              class="fa fa-times"></i></button-->
+    </div>
+    <!-- /. tools -->
+  </div>
+  <div class="box-body">
+    <form class="row" action="404.html" method="post">
+      <div class="form-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <label>Course</label>
+        <select class="form-control" name="course">
+          <option disabled selected>--</option>
+          <option>COE-211 - Data Structure</option>
+          <option>SE-612 - Advance Computer Architecture</option>
+          <option>MCE-413 - Operating Systems Design</option>
+        </select>
+      </div>
+      <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <label>Group</label>
+        <select class="form-control" name="group">
+          <option disabled selected>--</option>
+          <option>A</option>
+          <option>B</option>
+        </select>
+      </div>
+      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <label>Announcement</label>
+        <input type="text" class="form-control" name="title" placeholder="Title">
+      </div>
+      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <textarea class="textarea" name="content" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="box-footer clearfix">
+    <button class="pull-right btn btn-default" id="createAnnouncement">Create <i class="fa fa-arrow-circle-right"></i></button>
+  </div>
+</div>

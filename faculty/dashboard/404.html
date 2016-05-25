@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="workspace">
+<html ng-app="dashboard">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,22 +55,30 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>Workspace
-            <small>Notes, Reminders, Tasks</small>
-          </h1>
+          <h1>Error</h1>
         </section>
 
         <!-- Main content -->
         <section class="content">
-          <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12">
-              <notes-panel></notes-panel>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <calendar-widget></calendar-widget>
-              <todo-list-panel></todo-list-panel>
-            </div>
-          </div>
+
+          <div class="error-page">
+            <h2 class="headline text-yellow"> 404</h2>
+            <div class="error-content">
+              <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+              <p>
+                We could not find the page you were looking for.
+                Meanwhile, you may <a href="index.html">return to dashboard</a> or try using the search form.
+              </p>
+              <!--form class="search-form">
+                <div class="input-group">
+                  <input type="text" name="search" class="form-control" placeholder="Search">
+                  <div class="input-group-btn">
+                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i></button>
+                  </div>
+                </div><!-- /.input-group --
+              </form-->
+            </div><!-- /.error-content -->
+          </div><!-- /.error-page -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -96,8 +104,6 @@
     <!--== Scripts ==-->
     <!-- jQuery 2.2.0 -->
     <script src="../../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../../assets/plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Slimscroll -->
     <script src="../../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->

@@ -1,0 +1,27 @@
+<!-- The time line -->
+<ul class="timeline" ng-controller="announcementCtrl as announcements">
+  <!-- timeline time label -->
+  
+  <li class="time-label">
+    <span class="bg-purple">10 Feb. 2014</span>
+  </li>
+  <!-- /.timeline-label -->
+
+  <!-- timeline item -->
+  <li ng-repeat = "announcement in announcements.announcement">
+    <div class="timeline-item">
+      <span class="time"><i class="fa fa-clock-o"></i> {{announcement.time}} </span>
+
+      <h3 class="timeline-header text-purple" style="font-weight:600;">{{announcement.heading}}</h3>
+      <div class="timeline-body">{{announcement.description}}</div>
+      <div class="timeline-footer">
+        <button class="btn btn-xs bg-purple" style="cursor:default;">{{announcement.course}}</button>
+      </div>
+    </div>
+  </li>
+
+  
+  <li>
+    <i class="fa fa-clock-o bg-gray"></i>
+  </li>
+</ul>

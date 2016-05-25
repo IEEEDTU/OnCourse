@@ -1,0 +1,142 @@
+<div class="modal-header bg-purple">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Create New Event</h3>
+</div>
+<form name="form.eventForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Event Name -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Event Name*</label>
+      <input type="text" name="eventName" class="form-control" ng-model="event.eventName" required>
+
+      <p ng-show="form.eventForm.eventName.$invalid && !form.eventForm.eventName.$pristine" class="help-block">Event
+        name is required.</p>
+    </div>
+
+    <!-- Event Description -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Event Description*</label>
+      <textarea name="description" class="form-control" ng-model="events.description" ng-minlength="10" ng-maxlength="4000"
+                required></textarea>
+
+      <p ng-show="form.eventForm.description.$error.minlength  && !form.eventForm.description.$pristine"
+         class="help-block">Enter a valid description.</p>
+
+      <p ng-show="form.eventForm.description.$error.maxlength && !form.eventForm.description.$pristine"
+         class="help-block">Description is too long.</p>
+    </div>
+
+    <!-- Organiser -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Organised By*</label>
+      <input type="text" name="organisedBy" class="form-control" ng-model="event.organisedBy" required>
+
+      <p ng-show="form.eventForm.organisedBy.$invalid && !form.eventForm.organisedBy.$pristine" class="help-block">Enter
+        the name of organizing authority or person.</p>
+    </div>
+
+    <div class="row col-lg-12 col-md-12 col-sm-12">
+      <!-- Start Date -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>Start Date*</label>
+        <input type="date" name="startDate" class="form-control" ng-model="event.startDate" required>
+
+        <p ng-show="form.eventForm.startDate.$invalid && !form.eventForm.startDate.$pristine" class="help-block">Enter
+          start date.</p>
+      </div>
+
+      <!-- Start Time -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>Start Time*</label>
+        <input type="time" name="startTime" class="form-control" ng-model="event.startTime" required>
+
+        <p ng-show="form.eventForm.startTime.$invalid && !form.eventForm.startTime.$pristine" class="help-block">Enter
+          start time.</p>
+      </div>
+
+    </div>
+    <div class="row col-lg-12 col-md-12 col-sm-12">
+      <!-- End Date -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>End Date</label>
+        <input type="date" name="endDate" class="form-control" ng-model="event.endDate">
+
+        <!--p ng-show="form.eventForm.endDate.$invalid && !form.eventForm.endDate.$pristine" class="help-block">End date
+          should be greater than start date.</p-->
+      </div>
+
+      <!-- End Time -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-12">
+        <label>End Time</label>
+        <input type="time" name="endTime" class="form-control" ng-model="event.endTime">
+
+        <!--p ng-show="form.eventForm.endTime.$invalid && !form.eventForm.endTime.$pristine" class="help-block">Enter
+          start time.</p-->
+      </div>
+    </div>
+
+    <!-- Website -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Website Link</label>
+      <input type="url" name="website" class="form-control" ng-model="event.website">
+
+      <p ng-show="form.eventForm.website.$invalid && !form.eventForm.website.$pristine" class="help-block">Enter a valid
+        URL.</p>
+    </div>
+
+    <!-- FB event -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Facebook Event Link</label>
+      <input type="url" name="fbEvent" class="form-control" ng-model="event.fbEvent">
+
+      <p ng-show="form.eventForm.fbEvent.$invalid && !form.eventForm.fbEvent.$pristine" class="help-block">Enter a valid
+        facebook event link.</p>
+    </div>
+
+    <!-- Venue -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Venue*</label>
+      <input type="text" name="venue" class="form-control" ng-model="event.venue" required>
+
+      <p ng-show="form.eventForm.venue.$invalid && !form.eventForm.venue.$pristine" class="help-block">Enter a valid
+        venue.</p>
+    </div>
+
+    <!-- Image -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Image*</label>
+      <input type="file" name="image" class="form-control" ng-model="event.image" valid-file required>
+
+      <p ng-show="form.eventForm.image.$invalid && !form.eventForm.image.$pristine" class="help-block">Select a valid
+        image.</p>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <label>Contact*</label>
+      <input type="text" name="mobile" class="form-control" ng-model="event.mobile" ng-minlength="10" ng-maxlength="10"
+             ng-pattern="/^\d+$/" required>
+
+      <p ng-show="form.eventForm.mobile.$invalid && !form.eventForm.mobile.$pristine" class="help-block">Enter a valid
+        contact number.</p>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+      <label>Email*</label>
+      <input type="text" name="organisedBy" class="form-control" ng-model="name" required>
+
+      <p ng-show="form.eventForm.email.$invalid && !form.eventForm.email.$pristine" class="help-block">Enter a valid
+        email.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+    <!--eventName description image organisedBy startDateTime endDateTime website fbEvent venue-->
+  </div>
+  <div class="modal-footer bg-purple">
+    <button type="submit" class="btn btn-success" ng-disabled="form.eventForm.$invalid">Submit</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

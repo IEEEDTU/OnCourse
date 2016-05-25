@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Add Publication</h3>
+</div>
+<form name="form.publicationForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Publication Title -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Publication Title*</label>
+      <input type="text" name="title" class="form-control" ng-model="publication.title" required>
+
+      <p ng-show="form.publicationForm.title.$invalid && !form.publicationForm.title.$pristine" class="help-block">
+        Publication title is required.</p>
+    </div>
+
+    <!-- Publication Authors -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Author(s)*</label>
+      <input type="text" name="authors" class="form-control" ng-model="publication.authors" required>
+
+      <p ng-show="form.publicationForm.authors.$invalid && !form.publicationForm.authors.$pristine" class="help-block">
+        Publication author(s) is(are) required.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 row">
+      <!-- Organization -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label>Published by which organization?*</label>
+        <input type="text" name="organization" class="form-control" ng-model="publication.organization" required>
+
+        <p ng-show="form.publicationForm.organization.$invalid && !form.publicationForm.organization.$pristine"
+           class="help-block">Organization name is required.</p>
+      </div>
+
+      <!-- Publication Date -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label>Date of publication*</label>
+        <input type="date" name="publicationDate" class="form-control" ng-model="publication.publicationDate" required>
+
+        <p ng-show="form.publicationForm.publicationDate.$invalid && !form.publicationForm.publicationDate.$pristine"
+           class="help-block">Publication Date is required.</p>
+      </div>
+    </div>
+
+    <!-- Publication Link -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Publication Link</label>
+      <input type="url" name="link" class="form-control" ng-model="publication.link" required>
+
+      <p ng-show="form.publicationForm.link.$invalid && !form.publicationForm.link.$pristine" class="help-block">
+        Enter a valid link.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" ng-disabled="form.publicationForm.$invalid">Submit</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

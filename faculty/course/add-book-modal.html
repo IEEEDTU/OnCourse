@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Add Book</h3>
+</div>
+<form name="form.bookForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Book Name -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Book Name*</label>
+      <input type="text" name="bookName" class="form-control" ng-model="book.bookName" required>
+
+      <p ng-show="form.bookForm.bookName.$invalid && !form.bookForm.bookName.$pristine" class="help-block">Book name is
+        required.</p>
+    </div>
+
+    <!-- Book Authors -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Author(s)*</label>
+      <input type="text" name="authors" class="form-control" ng-model="book.authors" required>
+
+      <p ng-show="form.bookForm.authors.$invalid && !form.bookForm.authors.$pristine" class="help-block">Book author(s)
+        is(are) required.</p>
+    </div>
+
+    <!-- Book Publisher -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Publisher*</label>
+      <input type="text" name="publisher" class="form-control" ng-model="book.publisher" required>
+
+      <p ng-show="form.bookForm.publisher.$invalid && !form.bookForm.publisher.$pristine" class="help-block">Publisher
+        name is required.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 row">
+      <!-- Edition -->
+      <div class="form-group col-lg-3 col-md-3 col-sm-3">
+        <label>Edition*</label>
+        <input type="number" name="edition" class="form-control" ng-model="book.edition" required>
+
+        <p ng-show="form.bookForm.edition.$invalid && !form.bookForm.edition.$pristine" class="help-block">Edition
+          is required.</p>
+      </div>
+
+      <!-- Book Type -->
+      <div class="form-group col-lg-9 col-md-9 col-sm-9">
+        <label>Type*</label>
+        <select name="bookType" class="form-control" ng-model="book.bookType" required>
+          <option ng-selected="{true : selected==textbook}">Text Book</option>
+          <option ng-selected="{true : selected==referencebook}">Reference Book</option>
+        </select>
+        <p ng-show="form.bookForm.bookType.$invalid && !form.bookForm.bookType.$pristine" class="help-block">Book type
+          is required.</p>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" ng-disabled="form.bookForm.$invalid">Submit</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

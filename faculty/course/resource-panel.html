@@ -1,0 +1,59 @@
+<div ng-controller="resourceCtrl as resources">
+  <ul class="list-group" ng-controller="resourceModalCtrl">
+    <li class="list-group-item" style="padding-bottom:35px;">
+      <h5 class="list-group-item-heading text-bold">Text Books</h5>
+      <ol>
+        <li ng-repeat="book in resources.textBooks">
+          {{ book.bookName }}, {{ book.authors }}, {{ book.edition }}, {{ book.publisher }}
+        </li>
+      </ol>
+      <button class="btn btn-default btn-xs pull-right" ng-click="addBookDialog('textbook')">
+        <i class="fa fa-plus"></i> Add item
+      </button>
+    </li>
+    <li class="list-group-item" style="padding-bottom:35px;">
+      <h5 class="list-group-item-heading text-bold">Reference Books</h5>
+      <ol>
+        <li ng-repeat="book in resources.referenceBooks">
+          {{ book.bookName }}, {{ book.authors }}, {{ book.edition }}, {{ book.publisher }}
+        </li>
+      </ol>
+      <button class="btn btn-default btn-xs pull-right" ng-click="addBookDialog('referencebook')">
+        <i class="fa fa-plus"></i> Add item
+      </button>
+    </li>
+    <li class="list-group-item" style="padding-bottom:35px;">
+      <h5 class="list-group-item-heading text-bold">Publications</h5>
+      <ol>
+        <li ng-repeat="publication in resources.publications">
+          	<a href="{{ publication.link }}" target="_blank">{{ publication.title }}, {{ publication.authors }}, {{ publication.organization }}, {{ publication.publicationDate }}</a>
+        </li>
+      </ol>
+      <button class="btn btn-default btn-xs pull-right" ng-click="addPublicationDialog()">
+        <i class="fa fa-plus"></i> Add item
+      </button>
+    </li>
+    <li class="list-group-item" style="padding-bottom:35px;">
+      <h5 class="list-group-item-heading text-bold">Documents</h5>
+      <ol>
+        <li ng-repeat="document in resources.documents">
+          <a href="{{ document.source }}" target="_blank">{{ document.source }}</a>
+        </li>
+      </ol>
+      <button class="btn btn-default btn-xs pull-right" ng-click="addDocumentDialog()">
+        <i class="fa fa-plus"></i> Add item
+      </button>
+    </li>
+    <li class="list-group-item" style="padding-bottom:35px;">
+      <h5 class="list-group-item-heading text-bold">Web Links</h5>
+      <ol>
+        <li ng-repeat="weblink in resources.weblinks">
+          <a href="{{ weblink.link }}" target="_blank">{{ weblink.link }}</a>
+        </li>
+      </ol>
+      <button class="btn btn-default btn-xs pull-right" ng-click="addWebLinkDialog()">
+        <i class="fa fa-plus"></i> Add item
+      </button>
+    </li>
+  </ul>
+</div>

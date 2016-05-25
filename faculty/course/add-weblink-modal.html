@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h3>Add Web Link</h3>
+</div>
+<form name="form.webLinkForm" ng-submit="submitForm()" novalidate>
+  <div class="modal-body row">
+    <!-- Web Link -->
+    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+      <label>Web Link*</label>
+      <input type="url" name="weblink" class="form-control" ng-model="document.weblink" required>
+
+      <p ng-show="form.webLinkForm.weblink.$invalid && !form.webLinkForm.weblink.$pristine" class="help-block">Enter
+        a valid link.</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p>*Required fields</p>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" ng-disabled="form.webLinkForm.$invalid">Submit</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</form>

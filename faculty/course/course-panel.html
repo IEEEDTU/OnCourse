@@ -1,0 +1,47 @@
+<div class="col-lg-6 col-md-6 col-sm-12" ng-controller="courseCtrl as courses">
+  <!-- course-box -->
+  <div class="box box-primary" ng-repeat="course in courses.courses" ng-if="$index <= courses.courses.length/2">
+    <div class="box-header with-border">
+      <h4 class="box-title">
+        {{ course.courseCode }} - {{ course.courseName }}
+      </h4>
+
+      <div class="box-tools pull-right">
+        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="box-body">
+      {{ course.description }}
+    </div>
+    <div class="box-footer"><a href="course.html" class="btn btn-sm btn-primary btn-flat pull-right">See More</a>
+    </div>
+
+  </div>
+  <!-- /course-box -->
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12" ng-controller="courseCtrl as courses">
+  <!-- course-box -->
+  <div class="box box-primary" ng-repeat="course in courses.courses" ng-if="$index > courses.courses.length/2">
+    <div class="box-header with-border">
+      <h4 class="box-title">
+        {{ course.courseCode }} - {{ course.courseName }}
+      </h4>
+
+      <div class="box-tools pull-right">
+        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="box-body">
+      {{ course.description }}
+    </div>
+    <div class="box-footer"><a href="course.html" class="btn btn-sm btn-primary btn-flat pull-right">See More</a>
+    </div>
+
+  </div>
+  <!-- /course-box -->
+</div>
