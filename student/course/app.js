@@ -30,63 +30,73 @@ app.directive('evenCoursePanel', function(){
 		templateUrl: 'even-course-panel.html'
 	};
 });
+// odd course factory
+app.factory('oddCourseService', function($http) {
+	return {
+		getOddCourse : function() {
+			return $http.get("http://127.0.0.1:8000/course/retrieveOddCourses?branchCode="+"SE"+"&degreeCode="+"BTech"+"&degreeType="+"Regular").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
 
+app.factory('evenCourseService', function($http) {
+	return {
+		getOddCourse : function() {
+			return $http.get("http://127.0.0.1:8000/course/retrieveEvenCourses?branchCode="+"SE"+"&degreeCode="+"BTech"+"&degreeType="+"Regular").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
 // Odd Courses Controller
-app.controller('oddCourseCtrl', function(){
-	this.courses = [{
-		courseCode:"SE301",
-		courseName:"Object Oriented Programming",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE302",
-		courseName:"Data Structure",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE303",
-		courseName:"Discrete Mathematics",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE304",
-		courseName:"Operating System",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE305",
-		courseName:"Algorithm Design and Analysis",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	}];
+app.controller('oddCourseCtrl', function($scope,oddCourseService){
+	$scope.courses = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	oddCourseService.getOddCourse().then(function(courses){
+		if(courses.hasOwnProperty('exception')){
+			alert(courses.exception);
+		}else{
+			$scope.courses = courses.courses;
+		}
+		
+		
+		console.log(courses);
+	});
 });
 
 // Even Courses Controller
-app.controller('evenCourseCtrl', function(){
-	this.courses = [{
-		courseCode:"SE311",
-		courseName:"Object Oriented Programming",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE312",
-		courseName:"Data Structure",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE313",
-		courseName:"Discrete Mathematics",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE314",
-		courseName:"Operating System",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	},
-	{
-		courseCode:"SE315",
-		courseName:"Algorithm Design and Analysis",
-		description:"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
-	}];
+app.controller('evenCourseCtrl', function($scope,evenCourseService){
+	$scope.courses = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	evenCourseService.getOddCourse().then(function(courses){
+		if(courses.hasOwnProperty('exception')){
+			alert(courses.exception);
+		}else{
+			$scope.courses = courses.courses;
+		}
+		
+		
+		console.log(courses);
+	});
+
 });
 
 /*--- B. Course Details Panels ---*/
@@ -130,37 +140,75 @@ app.directive('discussionPanel', function(){
 	};
 });
 
-// Course Description Controller
-app.controller('descriptionCtrl', function(){
-	this.course = {
-		courseId: "SE201",
-		courseType: "Core",
-		courseName: "Object Oriented Programming",
-		description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-		credits: 4,
-		sessMaxMarks: 30,
-		endMaxMarks: 70,
-		maxMarks: 100,
-		minPassingMarks: 40,
-		semester: 3
+
+app.factory('descriptionService', function($http) {
+	return {
+		getDescription : function() {
+			return $http.get("http://127.0.0.1:8000/course/getCourseById?courseId="+"SE202").then(function(response) {
+				return response.data;
+			});
+		}
 	}
+});
+// Course Description Controller
+app.controller('descriptionCtrl', function($scope,descriptionService){
+	$scope.courses = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	descriptionService.getDescription().then(function(courses){
+		if(courses.hasOwnProperty('exception')){
+			alert(courses.exception);
+		}else{
+			$scope.courses = courses.course;
+
+		}
+		
+		
+		console.log(courses);
+	});
 		
 });
 
+app.factory('curriculumService', function($http) {
+	return {
+		getCurriculum : function() {
+			return $http.get("http://127.0.0.1:8000/course/retrieveCourseCurriculum?courseId="+"SE202").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
 // Course Curriculum Controller
-app.controller('curriculumCtrl', function(){
-	this.syllabus = [{
-		unitId: "Unit 1",
-		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-	},
-	{
-		unitId: "Unit 2",
-		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo . nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-	},
-	{
-		unitId: "Unit 3",
-		unitDescription: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
-	}];
+app.controller('curriculumCtrl', function($scope,curriculumService){
+	$scope.curriculum = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	curriculumService.getCurriculum().then(function(curriculum){
+		if(curriculum.hasOwnProperty('exception')){
+			alert(curriculum.exception);
+		}else{
+			$scope.curriculum = curriculum.coursecurriculum;
+
+		}
+		
+		
+		console.log(curriculum);
+	});
 });
 
 // Instructor Controller
