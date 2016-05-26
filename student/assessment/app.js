@@ -78,6 +78,7 @@ app.controller('scoreCardCtrl', function($scope){
 
 // Assignment Panel Controller
 app.controller('assignmentPanelCtrl', function($scope){
+	// assignments
 	$scope.assignments = [{
 		assignmentCode: "SE301A",
 		course: "SE 301",
@@ -114,6 +115,7 @@ app.controller('assignmentPanelCtrl', function($scope){
 		comments: "Sent in PDF format"
 	}];
 
+	// assignment grades
 	$scope.assignmentGrades = [{
 		assignmentCode: "SE301A",
 		course: "SE 301",

@@ -27,7 +27,7 @@
   }
 </style>
 
-<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl as assg">
+<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab_1" data-toggle="tab">Assignments</a></li>
     <li><a href="#tab_2" data-toggle="tab">Assignment Evaluation</a></li>
@@ -45,13 +45,13 @@
           <th class="text-center cell-header">Comments or Notes</th>
         </tr>
 
-        <tr ng-repeat="assDetails in assg.assignments">
-          <td class="text-center">{{assDetails.assCode}}</td>
-          <td class="text-center">{{assDetails.subject}}</td>
-          <td class="text-center">A</td>
-          <td><a href="#">{{assDetails.assignment}}</a></td>
-          <td class="text-center">{{assDetails.date}}</td>
-          <td>{{assDetails.comment}}</td>
+        <tr ng-repeat="assignment in assignments">
+          <td class="text-center">{{assignment.assignmentCode}}</td>
+          <td class="text-center">{{assignment.course}}</td>
+          <td class="text-center">{{assignment.group}}</td>
+          <td><a href="{{assignment.link}}" target="_blank">{{assignment.link}}</a></td>
+          <td class="text-center">{{assignment.deadline}}</td>
+          <td>{{assignment.comments}}</td>
         </tr>
       </table>
     </div>
@@ -69,14 +69,15 @@
         </tr>
 
 
-        <tr ng-repeat="assGrades in assg.assignmentGrades">
-          <td class="text-center">{{assGrades.assCode}}</td>
-          <td class="text-center">{{assGrades.subject}}</td>
-          <td class="text-center">A</td>
-          <td><a href="#">{{assGrades.assignment}} </a></td>
-          <td class="text-center">20</td>
-          <td>Evaluated</td>
-          <td class="text-center"><a href="assignment-evaluation.html" class="btn btn-sm btn-primary">Grade &nbsp;&nbsp;
+        <tr ng-repeat="value in assignmentEvaluation">
+          <td class="text-center">{{ value.assignmentCode }}</td>
+          <td class="text-center">{{ value.course }}</td>
+          <td class="text-center">{{ value.group }}</td>
+          <td><a href="{{ value.link }}">{{ value.link }} </a></td>
+          <td class="text-center">{{ value.submissionNum }}</td>
+          <td>{{ value.status }}</td>
+          <td class="text-center"><a href="assignment-evaluation.html?assignment={{ value.assignmentCode }}"
+                                     class="btn btn-sm btn-primary">Grade &nbsp;&nbsp;
             <i class="fa fa-arrow-circle-right"></i></a></td>
         </tr>
       </table>
