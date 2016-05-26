@@ -6,7 +6,7 @@ c. Registration Widget
 d. Result Panel
 ---------------------------------------*/
 
-var app = angular.module('assessment', ['cms']);
+var app = angular.module('assessment', ['cms', 'result']);
 
 // Score Card ------------------------
 app.directive('scoreCard', function(){
@@ -32,7 +32,7 @@ app.directive('registrationWidget', function(){
 	};
 });
 
-// Score Card ------------------------
+// Result Panel ------------------------
 app.directive('resultPanel', function(){
 	return {
 		restrict: 'E',
@@ -41,13 +41,35 @@ app.directive('resultPanel', function(){
 });
 
 // Score Card Controller
-app.controller('scoreCardCtrl', function(){
-	this.scores = {
-		semOne: "71.23",
-		semTwo: "56.77",
-		semThree: "68.31",
-		semFour: "70.66",
-		aggScore: "65.66",
+app.controller('scoreCardCtrl', function($scope){
+	$scope.scores = [{
+		semester: 1,
+		totalScore: "71.23",
+		totalCredits: "30"
+	},
+	{
+		semester: 2,
+		totalScore: "56.77",
+		totalCredits: "30"
+	},
+	{
+		semester: 3,
+		totalScore: "71.23",
+		totalCredits: "30"
+	},
+	{
+		semester: 4,
+		totalScore: "70.66",
+		totalCredits: "30"
+	},
+	{
+		semester: 5,
+		totalScore: "65.66",
+		totalCredits: "30"
+	}];
+
+	$scope.result = {
+		spi: "65.66",
 		creditsGained: "120",
 		activeBacks: "0",
 		clearedBacks: "2"
@@ -55,80 +77,73 @@ app.controller('scoreCardCtrl', function(){
 });
 
 // Assignment Panel Controller
-app.controller('assignmentPanelCtrl', function(){
-	this.assignments = [{
-		assCode: "SE301A",
-		subject: "SE 301",
-		assignment: "assignment_12_02_2016.pdf",
-		date: "27-12-2016",
-		comment: "Sent in PDF format"
+app.controller('assignmentPanelCtrl', function($scope){
+	$scope.assignments = [{
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		link: "assignment_12_02_2016.pdf",
+		deadline: "27-12-2016",
+		comments: "Sent in PDF format"
 	},
 	{
-		assCode: "SE301A",
-		subject: "SE 301",
-		assignment: "assignment_12_02_2016.pdf",
-		date: "27-12-2016",
-		comment: "Sent in PDF format"
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		link: "assignment_12_02_2016.pdf",
+		deadline: "27-12-2016",
+		comments: "Sent in PDF format"
 	},
 	{
-		assCode: "SE301A",
-		subject: "SE 301",
-		assignment: "assignment_12_02_2016.pdf",
-		date: "27-12-2016",
-		comment: "Sent in PDF format"
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		link: "assignment_12_02_2016.pdf",
+		deadline: "27-12-2016",
+		comments: "Sent in PDF format"
 	},
 	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		date:"27-12-2016",
-		comment:"Sent in PDF format"
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		link: "assignment_12_02_2016.pdf",
+		deadline: "27-12-2016",
+		comments: "Sent in PDF format"
 	},
 	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		date:"27-12-2016",
-		comment:"Sent in PDF format"
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		link: "assignment_12_02_2016.pdf",
+		deadline: "27-12-2016",
+		comments: "Sent in PDF format"
 	}];
 
-	this.assignmentGrades = [{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		grade:"A",
-		status:"Submitted"
+	$scope.assignmentGrades = [{
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		responseLink: "",
+		grade: "B",
+		submissionDate: "",
+		status:"Not submitted"
 	},
 	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		grade:"B",
-		status:"Submitted"
-	},
-	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		grade:"A",
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		responseLink: "assignment_12_02_2016.pdf",
+		grade: "B",
+		submissionDate: "2016-05-12",
 		status:"To be evaluated"
 	},
 	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		grade:"A",
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		responseLink: "assignment_12_02_2016.pdf",
+		grade: "B",
+		submissionDate: "2016-05-12",
 		status:"Submitted"
 	},
 	{
-		assCode:"SE301A",
-		subject:"SE 301",
-		assignment:"assignment_12_02_2016.pdf",
-		grade:"C",
+		assignmentCode: "SE301A",
+		course: "SE 301",
+		responseLink: "assignment_12_02_2016.pdf",
+		grade: "B",
+		submissionDate: "2016-05-12",
 		status:"To be evaluated"
 	}];
-});
-
-// Assignment Panel Controller
-app.controller('resultPanelCtrl', function(){
 });

@@ -1,7 +1,7 @@
 <!-- Widget: user widget style 1 -->
-<div class="box box-widget widget-user-2" ng-controller="scoreCardCtrl as score">
+<div class="box box-widget widget-user-2" ng-controller="scoreCardCtrl">
   <!-- Add the bg color to the header using any of the bg-* classes -->
-  <div class="widget-user-header bg-light-blue">
+  <div class="widget-user-header bg-light-blue-gradient">
     <!--div class="widget-user-image">
       <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
     </div><!-- /.widget-user-image -->
@@ -10,14 +10,11 @@
   </div>
   <div class="box-footer no-padding">
     <ul class="nav nav-stacked">
-      <li><a href="result-sheet.html">Semester I <span class="pull-right"> {{score.scores.semOne}} </span></a></li>
-      <li><a href="result-sheet.html">Semester II <span class="pull-right"> {{score.scores.semTwo}} </span></a></li>
-      <li><a href="result-sheet.html">Semester III <span class="pull-right"> {{score.scores.semThree}} </span></a></li>
-      <li><a href="result-sheet.html">Semester IV <span class="pull-right"> {{score.scores.semFour}} </span></a></li>
-      <li style="font-weight:800;"><a href="#">Overall Aggregate Score <span class="pull-right"> {{score.scores.aggScore}} </span></a></li>
-      <li style="font-weight:800;"><a href="#">Total Credits Gained <span class="pull-right"> {{score.scores.creditsGained}} </span></a></li>
-      <li><a href="#">Active Backlogs <span class="pull-right"> {{score.scores.activeBacks}} </span></a></li>
-      <li><a href="#">Cleared Backlogs <span class="pull-right"> {{score.scores.clearedBacks}} </span></a></li>
+      <li ng-repeat="score in scores"><a href="result-sheet.html?semester={{ score.semester }}">Semester {{ score.semester }} <span class="pull-right"> {{ score.totalScore }} </span></a></li>
+      <li style="font-weight:800;"><a href="#">Overall Aggregate Score <span class="pull-right"> {{ result.spi }} </span></a></li>
+      <li style="font-weight:800;"><a href="#">Total Credits Gained <span class="pull-right"> {{ result.creditsGained }} </span></a></li>
+      <li><a href="#">Active Backlogs <span class="pull-right"> {{ result.activeBacks }} </span></a></li>
+      <li><a href="#">Cleared Backlogs <span class="pull-right"> {{ result.clearedBacks }} </span></a></li>
     </ul>
   </div>
 </div><!-- /.widget-user -->

@@ -27,7 +27,7 @@
   }
 </style>
 
-<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl as assg">
+<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab_1" data-toggle="tab">Assignments</a></li>
     <li><a href="#tab_2" data-toggle="tab">Assignment Grades</a></li>
@@ -38,18 +38,18 @@
       <table class="table-custom table-bordered">
         <tr>
           <th class="text-center" style="width: 70px;">Assignment Code</th>
-          <th class="text-center cell-header" style="width: 70px;">Subject</th>
+          <th class="text-center cell-header" style="width: 70px;">Course</th>
           <th class="text-center cell-header">Assignment</th>
           <th class="text-center cell-header" style="width: 70px;">Last Date for Submission</th>
           <th class="text-center cell-header">Comments or Notes</th>
         </tr>
         
-        <tr ng-repeat="assDetails in assg.assignments">
-          <td>{{assDetails.assCode}}</td>
-          <td>{{assDetails.subject}}</td>
-          <td><a href="#">{{assDetails.assignment}}</a></td>
-          <td>{{assDetails.date}}</td>
-          <td>{{assDetails.comment}}</td>
+        <tr ng-repeat="assignment in assignments">
+          <td class="text-center">{{assignment.assignmentCode}}</td>
+          <td class="text-center">{{assignment.course}}</td>
+          <td><a href="{{assignment.link}}" target="_blank">{{assignment.link}}</a></td>
+          <td class="text-center">{{assignment.deadline}}</td>
+          <td>{{assignment.comments}}</td>
         </tr>
         
        
@@ -60,19 +60,26 @@
       <table class="table-custom table-bordered">
         <tr>
           <th class="text-center" style="width: 70px;">Assignment Code</th>
-          <th class="text-center cell-header" style="width: 70px;">Subject</th>
-          <th class="text-center cell-header">Assignment</th>
+          <th class="text-center cell-header" style="width: 70px;">Course</th>
+          <th class="text-center cell-header">Assignment Response</th>
           <th class="text-center cell-header" style="width: 70px;">Grade</th>
+          <th class="text-center cell-header" style="width: 70px;">Submission Date</th>
           <th class="text-center cell-header">Status</th>
         </tr>
-      
-     
-        <tr ng-repeat="assGrades in assg.assignmentGrades">
-          <td>{{assGrades.assCode}} </td>
-          <td>{{assGrades.subject}} </td>
-          <td><a href="#">{{assGrades.assignment}} </a></td>
-          <td>{{assGrades.grade}} </td>
-          <td>{{assGrades.status}} </td>
+
+        <tr ng-repeat="grade in assignmentGrades">
+          <td class="text-center">{{grade.assignmentCode}} </td>
+          <td class="text-center">{{grade.course}} </td>
+          <td>
+            <a href="{{grade.responseLink}}" ng-show="grade.responseLink">{{grade.responseLink}} </a>
+            <span ng-show="!grade.responseLink"> -- </span>
+          </td>
+          <td class="text-center">{{grade.grade}} </td>
+          <td class="text-center">
+            <span ng-show="grade.submissionDate"> {{grade.submissionDate}} </span>
+            <span ng-show="!grade.submissionDate"> -- </span>
+          </td>
+          <td>{{grade.status}} </td>
         </tr>
         
       </table>

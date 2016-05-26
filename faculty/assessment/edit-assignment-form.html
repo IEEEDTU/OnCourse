@@ -1,0 +1,54 @@
+<!-- Assignment Editing -->
+<div class="box box-solid" style="border:1px solid #f4f4f4;">
+  <!-- form start -->
+  <form role="form" name="form.editForm" ng-submit="submitEditForm()" novalidate>
+    <div class="box-header">
+      <h5 class="box-title" style="font-weight:600;"><b>Edit assignment</b></h5>
+    </div>
+    <div class="box-body row">
+      <!-- assignment -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label>Assignment*</label>
+        <select class="form-control" name="assignmentCode" ng-model="assignment2.assignmentCode" required>
+          <!--option disabled selected>Select the assignment</option-->
+          <option>SE301A</option>
+          <option>SE301B</option>
+          <option>SE302A</option>
+          <option>SE301C</option>
+        </select>
+        <p ng-show="form.editForm.assignmentCode.$invalid && !form.editForm.assignmentCode.$pristine" class="help-block">
+          Select an option.</p>
+      </div>
+
+      <!-- deadline -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label for="deadline">Deadline*</label>
+        <input type="date" class="form-control" id="deadline" name="deadline" ng-model="assignment2.deadline" required>
+
+        <p ng-show="form.editForm.deadline.$invalid && !form.editForm.deadline.$pristine" class="help-block">
+          Enter a valid deadline.</p>
+      </div>
+
+      <!-- comments -->
+      <div class="form-group col-lg-12 col-md-12 col-sm-12">
+        <label for="comment">Comments</label>
+              <textarea id="comment" class="form-control" name="comment" ng-model="assignment2.comment"
+                        ng-minlength="10" ng-maxlength="4000"></textarea>
+
+        <p ng-show="form.editForm.comment.$error.minlength  && !form.editForm.comment.$pristine"
+           class="help-block">Enter a valid comment.</p>
+
+        <p ng-show="form.editForm.comment.$error.maxlength && !form.editForm.comment.$pristine"
+           class="help-block">Comment is too long.</p>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <p>*Required fields</p>
+      </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-success" ng-disabled="form.editForm.$invalid">Save</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+<style type="text/css" rel="stylesheet">
+  .table-custom{
+  width:100%;
+  }
+  .table-custom td, .table-custom th{
+  padding: 7px;
+  }
+  .alert-success-custom{
+  background-color:#dff0d8;
+  color:#3c763d;
+  border-color:#d6e9c6;
+  }
+  .alert-info-custom{
+  background-color:#d9edf7;
+  color:#31708f;
+  border-color:#bce8f1;
+  }
+  .alert-warning-custom{
+  background-color:#fcf8e3;
+  color:#8a6d3b;
+  border-color:#faebcc;
+  }
+  .alert-danger-custom{
+  background-color:#f2dede;
+  color:#a94442;
+  border-color:#ebccd1;
+  }
+</style>
+
+<div class="nav-tabs-custom" ng-controller="assignmentPanelCtrl as assg">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_1" data-toggle="tab">Assignments</a></li>
+    <li><a href="#tab_2" data-toggle="tab">Assignment Evaluation</a></li>
+    <li><a href="#tab_3" data-toggle="tab">Assignment Management</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active table-responsive" id="tab_1">
+      <table class="table-custom table-bordered">
+        <tr>
+          <th class="text-center" style="width: 70px;">Assignment Code</th>
+          <th class="text-center cell-header" style="width: 70px;">Course</th>
+          <th class="text-center cell-header" style="width: 70px;">Group</th>
+          <th class="text-center cell-header">Assignment</th>
+          <th class="text-center cell-header" style="width: 70px;">Last Date for Submission</th>
+          <th class="text-center cell-header">Comments or Notes</th>
+        </tr>
+
+        <tr ng-repeat="assDetails in assg.assignments">
+          <td class="text-center">{{assDetails.assCode}}</td>
+          <td class="text-center">{{assDetails.subject}}</td>
+          <td class="text-center">A</td>
+          <td><a href="#">{{assDetails.assignment}}</a></td>
+          <td class="text-center">{{assDetails.date}}</td>
+          <td>{{assDetails.comment}}</td>
+        </tr>
+      </table>
+    </div>
+    <!-- /.tab-pane -->
+    <div class="tab-pane table-responsive" id="tab_2">
+      <table class="table-custom table-bordered">
+        <tr>
+          <th class="text-center" style="width: 70px;">Assignment Code</th>
+          <th class="text-center cell-header" style="width: 70px;">Course</th>
+          <th class="text-center cell-header" style="width: 70px;">Group</th>
+          <th class="text-center cell-header">Assignment</th>
+          <th class="text-center" style="width: 70px;">No. of Submissions</th>
+          <th class="text-center cell-header">Status</th>
+          <th class="text-center cell-header">Evaluation</th>
+        </tr>
+
+
+        <tr ng-repeat="assGrades in assg.assignmentGrades">
+          <td class="text-center">{{assGrades.assCode}}</td>
+          <td class="text-center">{{assGrades.subject}}</td>
+          <td class="text-center">A</td>
+          <td><a href="#">{{assGrades.assignment}} </a></td>
+          <td class="text-center">20</td>
+          <td>Evaluated</td>
+          <td class="text-center"><a href="assignment-evaluation.html" class="btn btn-sm btn-primary">Grade &nbsp;&nbsp;
+            <i class="fa fa-arrow-circle-right"></i></a></td>
+        </tr>
+      </table>
+    </div>
+    <!-- /.tab-pane -->
+    <div class="tab-pane" id="tab_3">
+      <create-assignment-form></create-assignment-form>
+      <edit-assignment-form></edit-assignment-form>
+      <delete-assignment-form></delete-assignment-form>
+    </div>
+    <!-- /.tab-pane -->
+  </div>
+  <!-- /.tab-content -->
+</div>

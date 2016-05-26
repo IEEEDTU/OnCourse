@@ -1,0 +1,77 @@
+<!-- Assignment Creation -->
+<div class="box box-solid" style="border:1px solid #f4f4f4;">
+  <!-- form start -->
+  <form role="form" name="form.createForm" ng-submit="submitCreateForm()" novalidate>
+    <div class="box-header">
+      <h5 class="box-title" style="font-weight:600;"><b>Create a new assignment</b></h5>
+    </div>
+    <div class="box-body row">
+      <!-- course -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label>Course*</label>
+        <select class="form-control" name="course" ng-model="assignment1.course" required>
+          <!--option disabled selected>Select the course</option-->
+          <option>SE 301</option>
+          <option>SE 302</option>
+          <option>SE 303</option>
+          <option>SE 304</option>
+        </select>
+
+        <p ng-show="form.createForm.course.$invalid && !form.createForm.course.$pristine" class="help-block">
+          Select an option.</p>
+      </div>
+
+      <!-- group -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label>Group*</label>
+        <select class="form-control" name="group" ng-model="assignment1.group" required>
+          <!--option disabled selected>Select the group</option-->
+          <option>A</option>
+          <option>B</option>
+        </select>
+
+        <p ng-show="form.createForm.group.$invalid && !form.createForm.group.$pristine" class="help-block">
+          Select an option.</p>
+      </div>
+
+      <!-- deadline -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label for="deadline">Deadline*</label>
+        <input type="date" class="form-control" id="deadline" name="deadline" ng-model="assignment1.deadline" required>
+
+        <p ng-show="form.createForm.deadline.$invalid && !form.createForm.deadline.$pristine" class="help-block">
+          Enter a valid deadline.</p>
+      </div>
+
+      <!-- assignment file -->
+      <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        <label for="file">File input</label>
+        <input type="file" id="file" name="file" ng-model="assignment1.file" validFile>
+
+        <p ng-show="form.createForm.file.$invalid && !form.createForm.file.$pristine" class="help-block">File size
+          should not exceed 25 MB.</p>
+      </div>
+
+      <!-- comments -->
+      <div class="form-group col-lg-12 col-md-12 col-sm-12">
+        <label for="comment">Comments</label>
+              <textarea id="comment" class="form-control" name="comment" ng-model="assignment1.comment"
+                        ng-minlength="10" ng-maxlength="4000"></textarea>
+
+        <p ng-show="form.createForm.comment.$error.minlength  && !form.createForm.comment.$pristine"
+           class="help-block">Enter a valid comment.</p>
+
+        <p ng-show="form.createForm.comment.$error.maxlength && !form.createForm.comment.$pristine"
+           class="help-block">Comment is too long.</p>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <p>*Required fields</p>
+      </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary" ng-disabled="form.createForm.$invalid">Submit</button>
+    </div>
+  </form>
+</div>
