@@ -1,290 +1,144 @@
-/*---------------------------------------
-Directives & Controller of Course app:
-A. Courses Index Page Panels
-i.  Odd Course Panel
-ii. Even Course Panel
+<!DOCTYPE html>
+<html ng-app="course">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OnCourse</title>
 
-B. Course Details Panels
-i. 	 Course Description
-ii.  Course Curriculum
-iii. Instructor
-iv.  Resources
-v. 	 Discussion
----------------------------------------*/
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../assets/dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="../../assets/dist/css/skins/skin-blue.min.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../../assets/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../../assets/plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-var app = angular.module('course', ['cms']);
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-/*--- A. Courses Index Page Panels ---*/
-// Odd Course Panel ------------------------
-app.directive('oddCoursePanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'odd-course-panel.html'
-	};
-});
+  <body class="hold-transition skin-blue fixed sidebar-mini">
+    <div class="wrapper">
 
-// Even Course Panel ------------------------
-app.directive('evenCoursePanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'even-course-panel.html'
-	};
-});
-// odd course factory
-app.factory('oddCourseService', function($http) {
-	return {
-		getOddCourse : function() {
-			return $http.get("http://127.0.0.1:8000/course/retrieveOddCourses?branchCode="+"SE"+"&degreeCode="+"BTech"+"&degreeType="+"Regular").then(function(response) {
-				return response.data;
-			});
-		}
-	}
-});
+      <!--== Main Header ==-->
+      <header class="main-header">
+        <header-panel></header-panel>
+      </header>
+      <!--== ./Main Header ==-->
 
-app.factory('evenCourseService', function($http) {
-	return {
-		getOddCourse : function() {
-			return $http.get("http://127.0.0.1:8000/course/retrieveEvenCourses?branchCode="+"SE"+"&degreeCode="+"BTech"+"&degreeType="+"Regular").then(function(response) {
-				return response.data;
-			});
-		}
-	}
-});
-// Odd Courses Controller
-app.controller('oddCourseCtrl', function($scope,oddCourseService){
-	$scope.courses = [];
-	// 	var config = {
-	// 		headers: {
-	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-	//         	'Accept': 'application/json',
-	//         	'Content-Type': 'application/x-www-form-urlencoded',
-	//     	}
-	//     };
-	
-	
-	oddCourseService.getOddCourse().then(function(courses){
-		if(courses.hasOwnProperty('exception')){
-			alert(courses.exception);
-		}else{
-			$scope.courses = courses.courses;
-		}
-		
-		
-		console.log(courses);
-	});
-});
-
-// Even Courses Controller
-app.controller('evenCourseCtrl', function($scope,evenCourseService){
-	$scope.courses = [];
-	// 	var config = {
-	// 		headers: {
-	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-	//         	'Accept': 'application/json',
-	//         	'Content-Type': 'application/x-www-form-urlencoded',
-	//     	}
-	//     };
-	
-	
-	evenCourseService.getOddCourse().then(function(courses){
-		if(courses.hasOwnProperty('exception')){
-			alert(courses.exception);
-		}else{
-			$scope.courses = courses.courses;
-		}
-		
-		
-		console.log(courses);
-	});
-
-});
-
-/*--- B. Course Details Panels ---*/
-// Course Description Panel ------------------------
-app.directive('descriptionPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'description-panel.html'
-	};
-});
-
-// Course Curriculum Panel ------------------------
-app.directive('curriculumPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'curriculum-panel.html'
-	};
-});
-
-// Instructor Panel ------------------------
-app.directive('instructorPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'instructor-panel.html'
-	};
-});
-
-// Resource Panel ------------------------
-app.directive('resourcePanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'resource-panel.html'
-	};
-});
-
-// Discussion Panel ------------------------
-app.directive('discussionPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'discussion-panel.html'
-	};
-});
+      <!--== Main Sidebar ==-->
+      <aside class="main-sidebar">
+        <sidebar-panel></sidebar-panel>
+      </aside>
+      <!--== ./Main Sidebar ==-->
 
 
-app.factory('descriptionService', function($http) {
-	return {
-		getDescription : function() {
-			return $http.get("http://127.0.0.1:8000/course/getCourseById?courseId="+"SE202").then(function(response) {
-				return response.data;
-			});
-		}
-	}
-});
-// Course Description Controller
-app.controller('descriptionCtrl', function($scope,descriptionService){
-	$scope.courses = [];
-	// 	var config = {
-	// 		headers: {
-	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-	//         	'Accept': 'application/json',
-	//         	'Content-Type': 'application/x-www-form-urlencoded',
-	//     	}
-	//     };
-	
-	
-	descriptionService.getDescription().then(function(courses){
-		if(courses.hasOwnProperty('exception')){
-			alert(courses.exception);
-		}else{
-			$scope.courses = courses.course;
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Object Oriented Programming 
+            <small>SE 202</small>
+          </h1>
+        </section>
 
-		}
-		
-		
-		console.log(courses);
-	});
-		
-});
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                  <li class="active"><a href="#tab_1" data-toggle="tab">Course Description</a></li>
+                  <li><a href="#tab_2" data-toggle="tab">Course Curriculum</a></li>
+                  <li><a href="#tab_3" data-toggle="tab">Instructor</a></li>
+                  <li><a href="#tab_4" data-toggle="tab">Resources</a></li>
+                  <li><a href="#tab_5" data-toggle="tab">Discussion</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab_1">
+                    <description-panel></description-panel>
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_2">
+                    <curriculum-panel></curriculum-panel>
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_3">
+                    <instructor-panel></instructor-panel>
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_4">
+                    <resource-panel></resource-panel>
+                  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_5">
+                    <discussion-panel></discussion-panel>
+                  </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+              </div><!-- nav-tabs-custom -->
+            </div>
+          </div>
 
-app.factory('curriculumService', function($http) {
-	return {
-		getCurriculum : function() {
-			return $http.get("http://127.0.0.1:8000/course/retrieveCourseCurriculum?courseId="+"SE202").then(function(response) {
-				return response.data;
-			});
-		}
-	}
-});
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
 
-// Course Curriculum Controller
-app.controller('curriculumCtrl', function($scope,curriculumService){
-	$scope.curriculum = [];
-	// 	var config = {
-	// 		headers: {
-	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-	//         	'Accept': 'application/json',
-	//         	'Content-Type': 'application/x-www-form-urlencoded',
-	//     	}
-	//     };
-	
-	
-	curriculumService.getCurriculum().then(function(curriculum){
-		if(curriculum.hasOwnProperty('exception')){
-			alert(curriculum.exception);
-		}else{
-			$scope.curriculum = curriculum.coursecurriculum;
 
-		}
-		
-		
-		console.log(curriculum);
-	});
-});
+      <!--== Main Footer ==-->
+      <footer class="main-footer">
+        <footer-panel></footer-panel>
+      </footer>
+      <!--== ./Main Footer ==-->
 
-// Instructor Controller
-app.controller('instructorCtrl', function(){
-	this.faculty = {
-		name: "Dr. Ruchika Malhotra",
-		personalEmail: "abc@gmail.com",
-		personalMobile: "+91-9999645456",
-		designation: "Associate professor",
-		department: "Computer Science and Engineering Department"
-	};
-});
+      <!--== Control Sidebar ==-->
+      <aside class="control-sidebar control-sidebar-dark">
+        <csidebar-panel></csidebar-panel>
+      </aside><!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+      <!--== ./Control Sidebar ==-->
 
-// Resource Controller
-app.controller('resourceCtrl', function(){
-	this.textBooks = [{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	},
-	{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	},
-	{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	}];
+    </div><!-- ./wrapper -->
 
-	this.referenceBooks = [{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	},
-	{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	},
-	{
-		bookName: "Data Structures",
-		authors: "R.S. Pillai, S.K. Saini",
-		edition: "2",
-		publisher: "McGraw Hill"
-	}];
-
-	this.publications = [{
-		title: "Intrusion Detection and Prevention",
-		authors: "Ashish Kamra",
-		organization: "IEEE",
-		publicationDate: "2014-08-13",
-		link: "www.google.com"
-	}];
-
-	this.documents = [{
-		source: "www.sites.google.com/dss/lecture1.pdf"
-	},
-	{
-		source: "www.sites.google.com/dss/lecture1.pdf"
-	}];
-
-	this.weblinks = [{
-		link: "www.wikipedia.com/data_structures"
-	},
-	{
-		link: "www.wikipedia.com/data_structures"
-	}];
-});
-
-// Discussion Controller
-app.controller('discussionCtrl', function(){
-});
+    <!--== Scripts ==-->
+    <!-- jQuery 2.2.0 -->
+    <script src="../../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="../../assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="../../assets/plugins/fastclick/fastclick.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="../../assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="../../assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../assets/dist/js/app.js"></script>
+    <!-- AngularJS v1.5.3 -->
+    <script src="../../assets/angular/angular.min.js"></script>
+    <script src="../../assets/angular/angular-animate.js"></script>
+    <script src="../../assets/bootstrap/js/ui-bootstrap-tpls-1.3.1.js"></script>
+    <!-- custom script for layout -->
+    <script src="../js/layout.js"></script>
+    <script src="app.js"></script>
+    <!--== ./Scripts ==-->
+  </body>
+</html>
