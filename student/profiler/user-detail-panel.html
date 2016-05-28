@@ -1,4 +1,4 @@
-<div class="box box-solid">
+<div class="box box-solid" ng-controller="userProfileCtrl ">
   <div class="box-header">
     <h3 class="box-title text-light-blue">Personal Details</h3>
   </div>
@@ -7,67 +7,67 @@
     <table class="table table-hover">
       <tr>
         <td>Name</td>
-        <td>John Doe</td>
+        <td>{{student[0].fields.name}}</td>
       </tr>
       <tr>
         <td>Permanent Address</td>
-        <td>A-341, Ashok Vihar, Delhi - 110001</td>
+        <td>{{student[0].fields.permanentAdd}}</td>
       </tr>
       <tr>
         <td>Present Address</td>
-        <td>A-341, Ashok Vihar, Delhi - 110001</td>
+        <td>{{student[0].fields.presentAdd}}</td>
       </tr>
       <tr>
         <td>Local Guardian Address</td>
-        <td>A-341, Ashok Vihar, Delhi - 110001</td>
+        <td>{{student[0].fields.guardianAdd}}</td>
       </tr>
       <tr>
         <td>Personal Mobile Number</td>
-        <td>+91 - 9999666555</td>
+        <td>{{student[0].fields.personalMobile}}</td>
       </tr>
       <tr>
         <td>Alternative Mobile Number</td>
-        <td>+91 - 9999666555</td>
+        <td>{{student[0].fields.alternativeMobile}}</td>
       </tr>
       <tr>
         <td>Personal Email ID</td>
-        <td>veenalbansal@ymail.com</td>
+        <td>{{student[0].fields.personalEmail}}</td>
       </tr>
       <tr>
         <td>Alternative Email ID</td>
-        <td>veenalbansal@ymail.com</td>
+        <td>{{student[0].fields.alternativeEmail}}</td>
       </tr>
       <tr>
         <td>Date of birth</td>
-        <td>21-08-1999</td>
+        <td>{{student[0].fields.dateOfBirth}}</td>
       </tr>
       <tr>
         <td>Gender</td>
-        <td>Female</td>
+        <td>{{student[0].fields.gender}}</td>
       </tr>
       <tr>
         <td>Category</td>
-        <td>General</td>
+        <td>{{student[0].fields.category}}</td>
       </tr>
       <tr>
         <td>Nationality</td>
-        <td>Indian</td>
+        <td>{{student[0].fields.nationality}}</td>
       </tr>
       <tr>
         <td>Religion</td>
-        <td>Hindu</td>
+        <td>{{student[0].fields.religion}}</td>
       </tr>
       <tr>
         <td>Dormitory</td>
-        <td>Yes</td>
+        <td>{{student[0].fields.dormitory}}</td>
       </tr>
       <tr>
         <td>Father’s Name</td>
-        <td>Purohit Bansal</td>
+        <td>{{student[0].fields.fatherName}}</td>
       </tr>
       <tr>
         <td>Mother’s Name</td>
-        <td>Nikita Bansal</td>
+        <td>{{student[0].fields.motherName}}</td>
       </tr>
       <tr>
         <td>Signature</td>
@@ -78,7 +78,7 @@
   <!-- /.box-body -->
 </div><!-- /.box -->
 
-<div class="box box-solid">
+<div class="box box-solid" ng-controller="userProfileCtrl ">
   <div class="box-header">
     <h3 class="box-title text-light-blue">Institutional Details</h3>
   </div>
@@ -87,27 +87,27 @@
     <table class="table table-hover">
       <tr>
         <td>Roll Number</td>
-        <td>2K12/SE/001</td>
+        <td>{{student[0].fields.rollNo}}</td>
       </tr>
       <tr>
         <td>DTU Registration ID</td>
-        <td>DTU/2K12/B01/1200</td>
+        <td>{{student[0].pk}}</td>
       </tr>
       <tr>
         <td>Branch</td>
-        <td>Software Engineering</td>
+        <td>{{student[0].fields.branch}}</td>
       </tr>
       <tr>
         <td>Degree</td>
-        <td>Bachelor of Technology</td>
+        <td>{{student[0].fields.degree}}</td>
       </tr>
       <tr>
         <td>Admission Year</td>
-        <td>2012</td>
+        <td>{{student[0].fields.admissionYear}}</td>
       </tr>
       <tr>
         <td>Expected Graduation Year</td>
-        <td>2016</td>
+        <td>{{student[0].fields.graduationYear}}</td>
       </tr>
     </table>
   </div>
