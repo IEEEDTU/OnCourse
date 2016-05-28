@@ -7,19 +7,19 @@
     <div class="box-group" id="odd-courses">
       <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
       <!-- course-box -->
-      <div class="panel box box-primary" ng-repeat="course in oddCourses.courses">
+      <div class="panel box box-primary" ng-repeat="course in courses">
         <div class="box-header with-border">
           <h4 class="box-title">
             <a data-toggle="collapse" data-parent="#odd-courses" href="#collapse1{{ $index }}">
-              {{ course.courseCode }} - {{ course.courseName }}
+              {{ course.pk }} - {{ course.fields.courseName }}
             </a>
           </h4>
         </div>
         <div id="collapse1{{ $index }}" class="panel-collapse collapse" ng-class="{in : $index==0}">
           <div class="box-body">
-            {{ course.description }}
+            {{ course.fields.description }}
           </div>
-          <div class="box-footer"><a href="course.html" class="btn btn-sm btn-primary btn-flat pull-right">See More</a></div>
+          <div class="box-footer" id="btn1"><a href="course.html" ng-click="fetchCourse(course.pk)" class="btn btn-sm btn-primary btn-flat pull-right" >See More</a></div>
         </div>
       </div><!-- /course-box -->
     </div>
