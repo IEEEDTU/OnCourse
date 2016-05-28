@@ -48,13 +48,73 @@ app.directive('settingPanel', function(){
 		templateUrl: 'setting-panel.html'
 	};
 });
-
+app.factory('userService', function($http) {
+	return {
+		getStudentDetail : function() {
+			return $http.get("http://127.0.0.1:8000/profiler/getStudentByRollNo?rollNo="+"2K12/SE/001").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
 // User Profile Controller
-app.controller('userProfileCtrl', function(){
+app.controller('userProfileCtrl', function(userService,$scope){
+$scope.student = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	userService.getStudentDetail().then(function(student){
+		if(student.hasOwnProperty('exception')){
+			alert(student.exception);
+		}else{
+			$scope.student = student.student;
+
+		}
+		
+		
+		console.log(student);
+	});
+		
 });
 
+app.factory('projectService', function($http) {
+	return {
+		getProjectDetail : function() {
+			return $http.get("http://127.0.0.1:8000/profiler/retrieveProjects?rollNo="+"2K12/SE/001").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
 // Projects Controller
-app.controller('projectCtrl', function(){
+app.controller('projectCtrl', function($scope,projectService){
+	$scope.projects = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	
+	projectService.getProjectDetail().then(function(projects){
+		if(projects.hasOwnProperty('exception')){
+			alert(projects.exception);
+		}else{
+			$scope.projects = projects.projects;
+
+		}
+		
+		
+		console.log(projects);
+	});
 });
 
 // Interest Field & Personal Skill Controller
