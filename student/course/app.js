@@ -170,17 +170,19 @@ app.directive('discussionPanel', function(){
 });
 
 
-app.factory('descriptionService', function($http) {
+
+app.factory('courseMenuService', function($http) {
 	return {
 		getDescription : function(id) {
-			return $http.get("http://127.0.0.1:8000/course/getCourseById?courseId="+id).then(function(response) {
+			return $http.get("http://127.0.0.1:8000/course/getCourseById"+id).then(function(response) {
 				return response.data;
 			});
 		}
 	}
 });
-// Course Description Controller
-app.controller('descriptionCtrl', function($scope,descriptionService,sharedProperties){
+
+// Course Menu Controller
+app.controller('courseMenuCtrl', function($scope,courseMenuService){
 	$scope.courses = [];
 	// 	var config = {
 	// 		headers: {
@@ -190,7 +192,45 @@ app.controller('descriptionCtrl', function($scope,descriptionService,sharedPrope
 	//     	}
 	//     };
 	
-	var id=sharedProperties.getProperty();
+	var id=window.location.search;
+	console.log(id);
+	
+	courseMenuService.getDescription(id).then(function(courses){
+		if(courses.hasOwnProperty('exception')){
+			alert(courses.exception);
+		}else{
+			$scope.courses = courses.course;
+
+		}
+		
+		
+		console.log(courses);
+	});
+		
+});
+
+app.factory('descriptionService', function($http) {
+	return {
+		getDescription : function(id) {
+			return $http.get("http://127.0.0.1:8000/course/getCourseById"+id).then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+// Course Description Controller
+app.controller('descriptionCtrl', function($scope,descriptionService){
+	$scope.courses = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	
+	var id=window.location.search;
 	console.log(id);
 	
 	descriptionService.getDescription(id).then(function(courses){
@@ -209,8 +249,8 @@ app.controller('descriptionCtrl', function($scope,descriptionService,sharedPrope
 
 app.factory('curriculumService', function($http) {
 	return {
-		getCurriculum : function() {
-			return $http.get("http://127.0.0.1:8000/course/retrieveCourseCurriculum?courseId="+"SE202").then(function(response) {
+		getCurriculum : function(id) {
+			return $http.get("http://127.0.0.1:8000/course/retrieveCourseCurriculum"+id).then(function(response) {
 				return response.data;
 			});
 		}
@@ -228,8 +268,8 @@ app.controller('curriculumCtrl', function($scope,curriculumService){
 	//     	}
 	//     };
 	
-	
-	curriculumService.getCurriculum().then(function(curriculum){
+	var id=window.location.search;
+	curriculumService.getCurriculum(id).then(function(curriculum){
 		if(curriculum.hasOwnProperty('exception')){
 			alert(curriculum.exception);
 		}else{
