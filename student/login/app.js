@@ -4,9 +4,9 @@ app.controller('mainCtrl', [ '$scope', '$http', '$cookies', '$cookieStore', func
 	
 	$scope.setCookie = function(){
 		$cookies.rollNo = '2K12/SE/001';
-		$cookieStore.put('branch',);
-		$cookieStore.put('degree',);
-		$cookieStore.put('admissionYear',);
+		$cookieStore.put('branch','SE');
+		$cookieStore.put('degree','BTech');
+		$cookieStore.put('admissionYear','2013');
 	}
 	
 }]);

@@ -77,9 +77,12 @@ $scope.student = [];
 
 		}
 		
-		
 		console.log(student);
 	});
+	
+	$scope.updateProfile = function(){
+		
+	}
 		
 });
 
@@ -121,6 +124,3 @@ app.controller('projectCtrl', function($scope,projectService){
 app.controller('fieldSkillCtrl', function(){
 });
 
-// Settings Controller
-app.controller('settingCtrl', function(){
-});

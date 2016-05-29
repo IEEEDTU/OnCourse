@@ -52,11 +52,34 @@ app.controller("projectModalCtrl", ['$scope', '$modal', '$log',
         };
 }]);
 
-var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm) {
+var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm, $http) {
     $scope.form = {}
+    $scope.project = {}
     $scope.submitForm = function () {
         if ($scope.form.projectForm.$valid) {
             console.log('project form is in scope');
+			console.log($scope.project.startDate);
+			$scope.data = 'title=' + $scope.project.title + 
+				'&description=' + $scope.project.description + 
+				'&highlight=' + $scope.project.highlight + 
+				'&startDate=' + $scope.project.startDate +
+				'&endDate=' + $scope.project.endDate + 
+				'&projectType=' + $scope.project.projectType + 
+				'&teamSize=' + $scope.project.teamSize +
+				'&rollNo=2K12/SE/001';
+			console.log($scope.data);
+			$http({
+				method: 'POST',
+				url: 'http://127.0.0.1:8000/profiler/addProject/',
+				data: $scope.data,
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			}).then(function(response){
+				if(response.data.hasOwnProperty('exception')){
+					alert(response.data.exception);
+				}else{
+					$scope.response = response.data;
+				}
+			});
             console.log($scope.form.projectForm.title);
             $modalInstance.close('closed');
         } else {
@@ -75,6 +98,27 @@ var editProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm
         if ($scope.form.projectForm.$valid) {
             console.log('project form is in scope');
             console.log($scope.form.projectForm.title);
+			$scope.data = 'title=' + $scope.project.title + 
+			'&description=' + $scope.project.description + 
+			'&highlight=' + $scope.project.highlight + 
+			'&startDate=' + $scope.project.startDate +
+			'&endDate=' + $scope.project.endDate + 
+			'&projectType=' + $scope.project.projectType + 
+			'&teamSize=' + $scope.project.teamSize +
+			'&rollNo=2K12/SE/001';
+			console.log($scope.data);
+			$http({
+				method: 'POST',
+		 url: 'http://127.0.0.1:8000/profiler/addProject/',
+		 data: $scope.data,
+		 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			}).then(function(response){
+				if(response.data.hasOwnProperty('exception')){
+					alert(response.data.exception);
+				}else{
+					$scope.response = response.data;
+				}
+			});
             $modalInstance.close('closed');
         } else {
             console.log('projectForm is not in scope');

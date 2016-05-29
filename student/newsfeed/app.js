@@ -32,170 +32,184 @@ app.directive('announcementPanel', function(){
 	};
 });
 
-
-// News Controller
-app.controller('newsCtrl', function(){
-	this.news = [{
-		headline: "News Headline",
-		description: "Description about the attachment can be placed here. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Description about the attachment can be placed here.Description about the attachment can be placed here. Description about the attachment can be placed here.",
-		time: "12-04-2016 12:05",
-		image: "../../assets/dist/img/photo1.png",
-		link: "www.google.com"
-	},
-	{
-		headline: "News Headline",
-		description: "Description about the attachment can be placed here. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Description about the attachment can be placed here.Description about the attachment can be placed here. Description about the attachment can be placed here.",
-		time: "12-04-2016 12:05",
-		image: "../../assets/dist/img/photo1.png",
-		link: "www.google.com"
-	},
-	{
-		headline: "News Headline",
-		description: "Description about the attachment can be placed here. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Description about the attachment can be placed here.Description about the attachment can be placed here. Description about the attachment can be placed here.",
-		time: "12-04-2016 12:05",
-		image: "../../assets/dist/img/photo1.png",
-		link: "www.google.com"
-	},
-	{
-		headline: "News Headline",
-		description: "Description about the attachment can be placed here. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Description about the attachment can be placed here.Description about the attachment can be placed here. Description about the attachment can be placed here.",
-		time: "12-04-2016 12:05",
-		image: "../../assets/dist/img/photo1.png",
-		link: "www.google.com"
-	},
-	{
-		headline: "News Headline",
-		description: "Description about the attachment can be placed here. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Description about the attachment can be placed here.Description about the attachment can be placed here. Description about the attachment can be placed here.",
-		time: "12-04-2016 12:05",
-		image: "../../assets/dist/img/photo1.png",
-		link: "www.google.com"
-	}];
-
-	this.notices = [{
-		subject: "Supplementary examination for B.Tech (eve) students / ex - students who are declared failed in the subjects of the odd semester 2015",
-		issueDate: "Dated: 12-04-2016",
-		fileLink: "www.google.com"
-	},
-	{
-		subject: "Supplementary examination for B.Tech (eve) students / ex - students who are declared failed in the subjects of the odd semester 2015",
-		issueDate: "Dated: 12-04-2016",
-		fileLink: "www.google.com"
-	},
-	{
-		subject: "Supplementary examination for B.Tech (eve) students / ex - students who are declared failed in the subjects of the odd semester 2015",
-		issueDate: "Dated: 12-04-2016",
-		fileLink: "www.google.com"
-	},
-	{
-		subject: "Supplementary examination for B.Tech (eve) students / ex - students who are declared failed in the subjects of the odd semester 2015",
-		issueDate: "Dated: 12-04-2016",
-		fileLink: "www.google.com"
-	}];
+app.factory('newsService', function($http) {
+	return {
+		getNews : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNews?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
 });
 
-// Notice Controller
-app.controller('noticeCtrl', function(){
+app.factory('noticesService', function($http) {
+	return {
+		getNotices : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreNotices?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
 });
 
-// Event Controller
-app.controller('eventCtrl', function(){
-	this.events = [{
-		eventName: "ICICI Trinity Orientation",
-		description: "Orientation of Trinity challenge 2016 in association with ICICI Orientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICI",
-		image: "../../assets/dist/img/photo1.png",
-		organisedBy: "Society of Software Engineers",
-		startDateTime: {day: "27", month: "May", year: "2016", hour: "11", minute: "30"},
-		endDateTime: {day: "27", month: "May", year: "2016", hour: "21", minute: "30"},
-		website: "http://www.google.com",
-		fbEvent: "http://www.facebook.com",
-		venue: "Senate Hall, Admin Block",
-		mobile: "+91-9999555666",
-		email: "xyz@gmail.com"
-	},
-	{
-		eventName: "ICICI Trinity Orientation",
-		description: "Orientation of Trinity challenge 2016 in association with ICICI Orientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICI",
-		image: "../../assets/dist/img/photo1.png",
-		organisedBy: "Society of Software Engineers",
-		startDateTime: {day: "27", month: "May", year: "2016", hour: "11", minute: "30"},
-		endDateTime: {day: "27", month: "May", year: "2016", hour: "21", minute: "30"},
-		website: "http://www.google.com",
-		fbEvent: "http://www.facebook.com",
-		venue: "Senate Hall, Admin Block",
-		mobile: "+91-9999555666",
-		email: "xyz@gmail.com"
-	},
-	{
-		eventName: "ICICI Trinity Orientation",
-		description: "Orientation of Trinity challenge 2016 in association with ICICI Orientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICI",
-		image: "../../assets/dist/img/photo1.png",
-		organisedBy: "Society of Software Engineers",
-		startDateTime: {day: "27", month: "May", year: "2016", hour: "11", minute: "30"},
-		endDateTime: {day: "27", month: "May", year: "2016", hour: "21", minute: "30"},
-		website: "http://www.google.com",
-		fbEvent: "http://www.facebook.com",
-		venue: "Senate Hall, Admin Block",
-		mobile: "+91-9999555666",
-		email: "xyz@gmail.com"
-	},
-	{
-		eventName: "ICICI Trinity Orientation",
-		description: "Orientation of Trinity challenge 2016 in association with ICICI Orientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICI",
-		image: "../../assets/dist/img/photo1.png",
-		organisedBy: "Society of Software Engineers",
-		startDateTime: {day: "27", month: "May", year: "2016", hour: "11", minute: "30"},
-		endDateTime: {day: "27", month: "May", year: "2016", hour: "21", minute: "30"},
-		website: "http://www.google.com",
-		fbEvent: "http://www.facebook.com",
-		venue: "Senate Hall, Admin Block",
-		mobile: "+91-9999555666",
-		email: "xyz@gmail.com"
-	},
-	{
-		eventName: "ICICI Trinity Orientation",
-		description: "Orientation of Trinity challenge 2016 in association with ICICI Orientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICIOrientation of Trinity challenge 2016 in association with ICICI",
-		image: "../../assets/dist/img/photo1.png",
-		organisedBy: "Society of Software Engineers",
-		startDateTime: {day: "27", month: "May", year: "2016", hour: "11", minute: "30"},
-		endDateTime: {day: "27", month: "May", year: "2016", hour: "21", minute: "30"},
-		website: "http://www.google.com",
-		fbEvent: "http://www.facebook.com",
-		venue: "Senate Hall, Admin Block",
-		mobile: "+91-9999555666",
-		email: "xyz@gmail.com"
-	}];
+app.factory('eventsService', function($http) {
+	return {
+		getEvents : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreEvents?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
 });
 
-// Announcement Controller
-app.controller('announcementCtrl', function(){
-	this.announcement = [{
-		time: "12:05",
-		heading: "Civil department is holding the practical exams from 14th May",
-		description: "Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...",
-		course: "Object Oriented Programming"
-	},
-	{
-		time: "12:05",
-		heading: "Civil department is holding the practical exams from 14th May",
-		description: "Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...",
-		course: "Object Oriented Programming"
-	},
-	{
-		time: "12:05",
-		heading: "Civil department is holding the practical exams from 14th May",
-		description: "Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...",
-		course: "Object Oriented Programming"
-	},
-	{
-		time: "12:05",
-		heading: "Civil department is holding the practical exams from 14th May",
-		description: "Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...",
-		course: "Object Oriented Programming"
-	},
-	{
-		time: "12:05",
-		heading: "Civil department is holding the practical exams from 14th May",
-		description: "Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...",
-		course: "Object Oriented Programming"
-	}];
+app.factory('announcementsService', function($http) {
+	return {
+		getAnnouncements : function() {
+			return $http.get("http://127.0.0.1:8000/newsfeed/retrieveMoreAnnouncements?rowsPerPage=" + 15 + "&pageNo=" + 1).then(function(response) {
+				return response.data;
+			});
+		}
+	}
 });
+
+app.controller('newsCtrl', function($scope, newsService){
+	$scope.news = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	$scope.filteredNews = [];
+	$scope.totalItems = 0;
+	
+	newsService.getNews().then(function(news){
+		if(news.hasOwnProperty('exception')){
+			alert(news.exception);
+		}else{
+			$scope.news = news.news;
+		}
+		$scope.totalItems = $scope.news.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(news);
+	});
+	
+	$scope.pageCount = function () {
+		return Math.ceil($scope.news.length / $scope.itemsPerPage);
+	};
+	
+	$scope.$watch('currentPage + itemsPerPage', function() {
+		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+				  end = begin + $scope.itemsPerPage;
+				  console.log('watch news : ' + $scope.news);
+				  $scope.filteredNews = $scope.news.slice(begin,end);		
+	});
+	
+});
+
+app.controller('noticesCtrl', function($scope, noticesService){
+	$scope.notices = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	$scope.filteredNotices = [];
+	$scope.totalItems = 0;
+	
+	noticesService.getNotices().then(function(notices){
+		if(notices.hasOwnProperty('exception')){
+			alert(notices.exception);
+		}else{
+			$scope.notices = notices.notices;
+		}
+		$scope.totalItems = $scope.notices.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(notices);
+	});
+	
+	$scope.pageCount = function () {
+		return Math.ceil($scope.notices.length / $scope.itemsPerPage);
+	};
+	
+	$scope.$watch('currentPage + itemsPerPage', function() {
+		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+				  end = begin + $scope.itemsPerPage;
+				  console.log('watch notices : ' + $scope.notices);
+				  $scope.filteredNotices = $scope.notices.slice(begin,end);		
+	});
+	
+});
+
+app.controller('eventsCtrl', function($scope, eventsService){
+	$scope.events = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	$scope.filteredEvents = [];
+	$scope.totalItems = 0;
+	
+	eventsService.getEvents().then(function(events){
+		if(events.hasOwnProperty('exception')){
+			alert(events.exception);
+		}else{
+			$scope.events = events.events;
+		}
+		$scope.totalItems = $scope.events.length;;
+		$scope.itemsPerPage = 5;
+		$scope.currentPage = 1;
+		
+		$scope.maxSize = 5;
+		
+		console.log(events);
+	});
+	
+	$scope.pageCount = function () {
+		return Math.ceil($scope.events.length / $scope.itemsPerPage);
+	};
+	
+	$scope.$watch('currentPage + itemsPerPage', function() {
+		var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+				  end = begin + $scope.itemsPerPage;
+				  console.log('watch events : ' + $scope.events);
+				  $scope.filteredEvents = $scope.events.slice(begin,end);		
+	});
+	
+});
+
+app.controller('announcementsCtrl', function($scope, announcementsService){
+	$scope.events = [];
+	// 	var config = {
+	// 		headers: {
+	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+	//         	'Accept': 'application/json',
+	//         	'Content-Type': 'application/x-www-form-urlencoded',
+	//     	}
+	//     };
+	announcementsService.getAnnouncements().then(function(announcements){
+		if(announcements.hasOwnProperty('exception')){
+			alert(announcements.exception);
+		}else{
+			$scope.announcements = announcements.announcements;
+		}
+		
+		console.log(announcements);
+	});
+	
+});
+

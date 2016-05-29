@@ -53,10 +53,30 @@ var newsModalInstanceCtrl = function ($scope, $modalInstance) {
     };
 };
 
-var createNewsModalInstanceCtrl = function ($scope, $modalInstance, newsForm) {
+var createNewsModalInstanceCtrl = function ($scope, $modalInstance, newsForm, $http) {
     $scope.form = {}
+    $scope.news = {}
     $scope.submitForm = function () {
         if ($scope.form.newsForm.$valid) {
+			$scope.data = 'headline=' + $scope.news.headline + 
+			'&description=' + $scope.news.description + 
+			'&image=' + $scope.news.image + 
+			'&link=' + $scope.news.link + 
+			'&rollNo=' + '2K12/SE/001';
+			
+			$http({
+				method: 'POST',
+		 url: 'http://127.0.0.1:8000/newsfeed/addNews/',
+		 data: $scope.data,
+		 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			}).then(function(response){
+				if(response.data.hasOwnProperty('exception')){
+					alert(response.data.exception);
+				}else{
+					$scope.response = response.data;
+					alert('News added successfully, Refresh the page to see!');
+				}
+			});
             console.log('news form is in scope');
             console.log($scope.form.newsForm.headline);
             $modalInstance.close('closed');
