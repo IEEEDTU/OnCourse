@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html ng-app="course">
   <head>
     <meta charset="utf-8">
@@ -52,11 +52,12 @@
 
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" >
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>Object Oriented Programming 
-            <small>SE 202</small>
+        <section class="content-header" ng-controller="courseMenuCtrl">
+          <h1>{{ courses[0].fields.courseName }}
+            <small>{{ courses[0].pk }}</small>
+          
           </h1>
         </section>
 
