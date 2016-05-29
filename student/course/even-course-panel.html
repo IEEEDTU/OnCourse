@@ -19,7 +19,7 @@
           <div class="box-body">
             {{ course.fields.description }}
           </div>
-          <div class="box-footer"><a href="course.html" ng-click="fetchCourse(course.pk)"class="btn btn-sm btn-primary btn-flat pull-right">See More</a></div>
+          <div class="box-footer"><a href="course.html?courseId={{course.pk}}" class="btn btn-sm btn-primary btn-flat pull-right">See More</a></div>
         </div>
       </div><!-- /course-box -->
     </div>
