@@ -53,6 +53,10 @@
         <!--p ng-show="form.projectForm.endDate.$invalid && !form.projectForm.endDate.$pristine" class="help-block">End date
           should be greater than start date.</p-->
       </div>
+	  
+	  <div ng-model="sDate" style="display: none;"> {{ project.startDate | date:"yyyy-mm-dd" }} </div>
+	  <div ng-model="eDate" style="display: none;"> {{ project.endDate | date:"yyyy-mm-dd" }} </div>
+	  
     </div>
 
     <!-- Project Type -->

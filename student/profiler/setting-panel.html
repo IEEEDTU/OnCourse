@@ -1,23 +1,23 @@
-<form class="form-horizontal">
+<form class="form-horizontal" ng-controller="userProfileCtrl ">
   <div class="form-group">
     <label for="inputName" class="col-sm-3 control-label">Preferred Name</label>
 
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputName" name="preferredName" placeholder="Name" value="veenalbansal">
+      <input type="text" class="form-control" id="inputName" name="preferredName" placeholder="Name" value="{{student[0].fields.name}}">
     </div>
   </div>
   <div class="form-group">
     <label for="inputEmail1" class="col-sm-3 control-label">Personal Email Address</label>
 
     <div class="col-sm-9">
-      <input type="email" class="form-control" id="inputEmail1" name="personalEmail" placeholder="Email" value="veenalbansal@ymail.com">
+      <input type="email" class="form-control" id="inputEmail1" name="personalEmail" placeholder="Email" value="{{student[0].fields.personalEmail}}">
     </div>
   </div>
   <div class="form-group">
     <label for="inputEmail2" class="col-sm-3 control-label">Alternative Email Address</label>
 
     <div class="col-sm-9">
-      <input type="email" class="form-control" id="inputEmail2" name="alternativeEmail" placeholder="Email" value="veenalbansal123@gmail.com">
+      <input type="email" class="form-control" id="inputEmail2" name="alternativeEmail" placeholder="Email" value="{{student[0].fields.alternativeEmail}}">
     </div>
   </div>
   <div class="form-group">
@@ -27,7 +27,7 @@
       <input type="tel" class="form-control" id="inputMobile1" name="personalMobileCode" placeholder="Country Code" value="91">
     </div>
     <div class="col-sm-6">
-      <input type="tel" class="form-control" id="inputMobile1" name="personalMobileNum" placeholder="Mobile Number" value="9999666555">
+      <input type="tel" class="form-control" id="inputMobile1" name="personalMobileNum" placeholder="Mobile Number" value="{{student[0].fields.personalMobile}}">
     </div>
   </div>
   <div class="form-group">
@@ -37,7 +37,7 @@
       <input type="tel" class="form-control" id="inputMobile2" name="alternativeMobileCode" placeholder="Country Code" value="91">
     </div>
     <div class="col-sm-6">
-      <input type="tel" class="form-control" id="inputMobile2" name="alternativeMobileNum" placeholder="Mobile Number" value="9999555666">
+      <input type="tel" class="form-control" id="inputMobile2" name="alternativeMobileNum" placeholder="Mobile Number" value="{{student[0].fields.alternativeMobile}}">
     </div>
   </div>
   <div class="form-group">

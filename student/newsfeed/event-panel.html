@@ -7,18 +7,18 @@
       <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
     </div>
   </div><!-- /.box-header -->
-  <div class="box-body" ng-controller="eventCtrl as event">
+  <div class="box-body" ng-controller="eventsCtrl as event">
     <ul class="events-list event-list-in-box">
       <!-- Event item -->
-      <li class="item" ng-repeat="event in event.events">
+      <li class="item" ng-repeat="event in filteredEvents">
         <a href="#" ng-click="displayEventDialog(event)">
           <div class="event-date-box">
-            <div class="event-date">{{event.startDateTime.day}}</div>
-            <div class="event-month">{{event.startDateTime.month}}</div>
+			  <div class="event-date">{{event.fields.startDateTime | date:'dd'}}</div>
+			  <div class="event-month">{{event.fields.startDateTime | date:'MMM '}}</div>
           </div>
           <div class="event-info">
-            <p class="event-title">{{event.eventName}}</p>
-            <p class="event-venue"><i class="fa fa-map-marker"></i> {{event.venue}}</p>
+            <p class="event-title">{{event.fields.eventName}}</p>
+            <p class="event-venue"><i class="fa fa-map-marker"></i> {{event.fields.venue}}</p>
           </div>
         </a>
       </li>
@@ -29,12 +29,12 @@
   <!-- box-footer -->
   <div class="box-footer clearfix bg-purple">
     <button class="btn btn-sm btn-default" ng-click="createEventDialog()">Create Event</button>
-    <ul class="pagination pagination-sm no-margin pull-right">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
+	<pagination class="pagination-sm no-margin pull-right"
+			 max-size="maxSize"
+			 items-per-page="itemsPerPage"
+			 total-items="totalItems" 
+			 page="currentPage" 
+			 ng-change="pageChanged()">
+		</pagination>
   </div><!-- /.box-footer -->
 </div><!-- /.box -->

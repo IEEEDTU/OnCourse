@@ -1,32 +1,32 @@
 <div class="box box-solid" ng-controller="descriptionCtrl as description">
-  <div class="box-header with-border">
+  <div class="box-header with-border" >
     <h3 class="box-title text-bold">About Course</h3>
   </div>
   <div class="box-body table-responsive">
-    <h5 class="text-bold"> Course Code: {{ description.course.courseId }} | Course Type: {{ description.course.courseType }}</h5>
-    <p class="text-justify">{{ description.course.description }}</p>
+    <h5 class="text-bold"> Course Code: {{ courses[0].pk }} | Course Type: {{ courses[0].fields.courseType }}</h5>
+    <p class="text-justify">{{ courses[0].fields.description }}</p>
     <br>
     <h4 class="text-bold">Marking Scheme</h4>
     <table class="table table-hover">
       <tr>
         <td>Mid Semester Marks</td>
-        <td>{{ description.course.sessMaxMarks }}</td>
+        <td>{{ courses[0].fields.sessMaxMarks }}</td>
       </tr>
       <tr>
         <td>End Semester Marks</td>
-        <td>{{ description.course.endMaxMarks }}</td>
+        <td>{{ courses[0].fields.endMaxSemMarks }}</td>
       </tr>
       <tr class="text-bold">
         <td>Maximum Marks</td>
-        <td>{{ description.course.maxMarks }}</td>
+        <td>{{ courses[0].fields.maxMarks }}</td>
       </tr>
       <tr class="text-bold">
         <td>Total Credits</td>
-        <td>{{ description.course.credits }}</td>
+        <td>{{ courses[0].fields.credits }}</td>
       </tr>
       <tr>
         <td>Minimum Passing Marks</td>
-        <td>{{ description.course.minPassingMarks }}</td>
+        <td>{{ courses[0].fields.minPassingMarks }}</td>
       </tr>
     </table>
   </div>

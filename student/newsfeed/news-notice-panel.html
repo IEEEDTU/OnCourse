@@ -14,17 +14,17 @@
   <!-- /.box-header -->
 
   <!-- box-body -->
-  <div class="box-body tab-content" ng-controller="newsCtrl as newsfeed">
+  <div class="box-body tab-content">
     <!-- News panel -->
-    <div class="tab-pane active" id="news">
+	  <div class="tab-pane active" id="news" ng-controller="newsCtrl as newsfeed">
       <!-- News item -->
-      <div class="attachment-block clearfix" ng-repeat="news in newsfeed.news">
-        <img class="attachment-img" src="{{ news.image }}" alt="attachment image">
+      <div class="attachment-block clearfix" ng-repeat="news in filteredNews">
+		  <img class="attachment-img" src="http://epaper2.mid-day.com/images/no_image_thumb.gif" alt="attachment image">
         <div class="attachment-pushed">
-          <span class="time pull-right text-muted" style="font-size:12px;"><i class="fa fa-clock-o"></i> {{news.time}}</span>
-          <h4 class="attachment-heading"><a href="#" ng-click="displayNewsDialog(news)">{{news.headline}}</a></h4>
+          <span class="time pull-right text-muted" style="font-size:12px;"><i class="fa fa-clock-o"></i> {{news.fields.date}}</span>
+          <h4 class="attachment-heading"><a href="#" ng-click="displayNewsDialog(news)">{{news.fields.headline}}</a></h4>
           <div class="attachment-text">
-            {{news.description}}
+            {{news.fields.description}}
           </div><!-- /.attachment-text -->
         </div><!-- /.attachment-pushed -->
       </div><!-- /.attachment-block -->
@@ -33,12 +33,12 @@
     <!-- END of news panel -->
 
     <!-- Notice panel -->
-    <div class="tab-pane" id="notice">
-      <ul class="list-unstyled" ng-repeat="notice in newsfeed.notices">
+	<div class="tab-pane" id="notice" ng-controller="noticesCtrl as newsfeed">
+      <ul class="list-unstyled" ng-repeat="notice in filteredNotices">
         <!-- Notice item -->
         <li class="list-box">
-          <p class="list-box-body"><a href="{{notice.fileLink}}" target="_blank">{{notice.subject}}</a></p>
-          <span class="pull-right text-muted list-box-footer">{{notice.issueDate}}</span>
+          <p class="list-box-body"><a href="{{notice.fields.fileLink}}" target="_blank">{{notice.fields.subject}}</a></p>
+          <span class="pull-right text-muted list-box-footer">{{notice.fields.issueDate}}</span>
         </li>
         <!-- END of notice item -->
       </ul>
@@ -50,15 +50,13 @@
   <!-- box-footer -->
   <div class="box-footer clearfix bg-green">
     <button class="btn btn-sm btn-default" ng-click="createNewsDialog()">Create News</button>
-    <ul class="pagination pagination-sm no-margin pull-right">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
+	<pagination class="pagination-sm no-margin pull-right"
+			 max-size="maxSize"
+			 items-per-page="itemsPerPage"
+			 total-items="totalItems" 
+			 page="currentPage" 
+			 ng-change="pageChanged()">
+		</pagination>
   </div><!-- /.box-footer -->
 
 </div>

@@ -1,8 +1,8 @@
-<div ng-controller="curriculumCtrl as curriculum">
+<div ng-controller="curriculumCtrl ">
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="unit in curriculum.syllabus">
-      <h4 class="list-group-item-heading text-bold">{{ unit.unitId }}</h4>
-      <p>{{ unit.unitDescription }}</p>
+    <li class="list-group-item" ng-repeat="unit in curriculum">
+      <h4 class="list-group-item-heading text-bold">Unit-{{ unit.fields.unit }}</h4>
+      <p>{{ unit.fields.description }}</p>
     </li>
   </ul>
 </div>
