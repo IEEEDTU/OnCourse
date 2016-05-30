@@ -11,10 +11,10 @@
 <div class="box no-border no-padding no-margin no-shadow" ng-controller="projectModalCtrl">
   <div class="box-body no-border no-padding" ng-controller="projectCtrl"  >
     <ul class="list-group project-items">
-      <li class="list-group-item no-padding">
+		<li class="list-group-item no-padding" ng-repeat="project in projects">
         <div class="box no-padding no-margin">
           <div class="box-header with-border">
-            <h4 class="box-title">Prevention of Insider Attacks and Fraudlent Transaction Detection System</h4>
+            <h4 class="box-title">{{ project.fields.title }}</h4>
             <!-- tools box -->
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-toggle="dropdown"><i class="fa fa-gear"></i></button>
@@ -26,40 +26,13 @@
           </div>
 
           <div class="box-body">
-            <p class="text-muted highlight">B. Tech. project under Ms. Indu Singh (Assistant Professor, CSE Dept.,
-              DTU)</p>
+			  <p class="text-muted highlight">{{ project.fields.description }}</p>
 
-            <p>Insider attacks are prevented and fraudlent transaction are detected using data mining tool, Weka.</p>
+			  <p>{{ project.fields.highlight }}</p>
           </div>
 
           <div class="box-footer">
-            <p class="text-muted pull-right date"><i class="fa fa-calendar"></i> Aug 2015 - Nov 2015</p>
-          </div>
-        </div>
-      </li>
-      <li class="list-group-item no-padding">
-        <div class="box no-padding no-margin">
-          <div class="box-header with-border">
-            <h4 class="box-title">Prevention of Insider Attacks and Fraudlent Transaction Detection System</h4>
-            <!-- tools box -->
-            <div class="box-tools pull-right">
-              <button class="btn btn-box-tool" data-toggle="dropdown"><i class="fa fa-gear"></i></button>
-              <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="#" ng-click="editProjectDialog(project)">Edit project</a></li>
-                <li><a href="#">Remove project</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="box-body">
-            <p class="text-muted highlight">B. Tech. project under Ms. Indu Singh (Assistant Professor, CSE Dept.,
-              DTU)</p>
-
-            <p>Insider attacks are prevented and fraudlent transaction are detected using data mining tool, Weka.</p>
-          </div>
-
-          <div class="box-footer">
-            <p class="text-muted pull-right date"><i class="fa fa-calendar"></i> Aug 2015</p>
+			  <p class="text-muted pull-right date"><i class="fa fa-calendar"></i> {{ project.fields.startDate | date:"MM/dd/yyyy" }} - {{ project.fields.endDate | date:"MM/dd/yyyy" }}</p>
           </div>
         </div>
       </li>
