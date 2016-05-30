@@ -1,0 +1,61 @@
+<style type="text/css" rel="stylesheet">
+  .table th, .table td{
+  text-align: center;
+  }
+  .table td:first-child{
+  /*font-weight:bold;*/
+  vertical-align:middle;
+  }
+  .table tr:first-child{
+  border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+  font-weight: bold;
+  }
+</style>
+
+
+<div class="box box-primary" ng-controller="resultCtrl">
+  <div class="box-header">
+    <h3 class="box-title">Course: SE301 | Group: A</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body no-padding row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <th><br/>Roll <br/>Number</th>
+          <th>Sessional Score <br/><br/>(Max: 30)</th>
+          <th>End Semester Score <br/>(Max: 70)</th>
+          <th>Total Score <br/><br/><br/>(Max: 100)</th>
+        </tr>
+        <tr ng-repeat="score in scores" ng-if="$index < scores.length/2">
+          <td>{{ score.rollNo }}</td>
+          <td>{{ score.sessMarks }}</td>
+          <td>{{ score.endMarks }}</td>
+          <td>{{ score.sessMarks + score.endMarks }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <th><br/>Roll <br/>Number</th>
+          <th>Sessional Score <br/><br/>(Max: 30)</th>
+          <th>End Semester Score <br/>(Max: 70)</th>
+          <th>Total Score <br/><br/><br/>(Max: 100)</th>
+        </tr>
+        <tr ng-repeat="score in scores" ng-if="$index >= scores.length/2">
+          <td>{{ score.rollNo }}</td>
+          <td>{{ score.sessMarks }}</td>
+          <td>{{ score.endMarks }}</td>
+          <td>{{ score.sessMarks + score.endMarks }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer text-center">
+    <a class="btn btn-primary" href="edit-result-sheet.html">Edit</a>
+    <button type="button" class="btn btn-success">Download</button>
+  </div>
+</div>

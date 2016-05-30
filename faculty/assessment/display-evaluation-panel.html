@@ -1,0 +1,57 @@
+<style type="text/css" rel="stylesheet">
+  .table th, .table td{
+  text-align: center;
+  }
+  .table td:first-child, .table td:nth-child(2){
+  /*font-weight:bold;*/
+  vertical-align:middle;
+  }
+  .table tr:first-child{
+  border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+  font-weight: bold;
+  }
+</style>
+
+
+<form class="box box-primary" name="form.resultForm" ng-submit="submitForm()" novalidate ng-controller="evaluationCtrl">
+  <div class="box-header">
+    <h3 class="box-title">Course: SE301 | Group: A | Assignment Code: SE301A</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body no-padding row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <th>Roll Number</th>
+          <th>Response Link</th>
+          <th>Grade</th>
+        </tr>
+        <tr ng-repeat="response in responses" ng-if="$index < responses.length/2">
+          <td>{{ response.rollNo }}</td>
+          <td><a href="{{ response.link }}" target="_blank">Response Link</a></td>
+          <td>{{ response.grade }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <th>Roll Number</th>
+          <th>Response Link</th>
+          <th>Grade</th>
+        </tr>
+        <tr ng-repeat="response in responses" ng-if="$index >= responses.length/2">
+          <td>{{ response.rollNo }}</td>
+          <td><a href="{{ response.link }}" target="_blank">Response Link</a></td>
+          <td>{{ response.grade }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer text-center">
+    <a class="btn btn-primary" href="edit-evaluation-sheet.html">Edit</a>
+    <button type="button" class="btn btn-success">Download</button>
+  </div>
+</form>

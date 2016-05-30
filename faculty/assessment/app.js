@@ -1,14 +1,20 @@
 /*---------------------------------------
 Directives & Controller of Assessment app:
-a. Score Card
-b. Assignment Panel
-	i. Assignment creation form
-	ii. Assignment editing form
-	iii. Assignment deletion form
-d. Result Panel
+1. Main (index) page
+	a. Score Card
+	b. Assignment Panel
+		i. Assignment creation form
+		ii. Assignment editing form
+		iii. Assignment deletion form
+
+2. Result Sheet Page
+	a. Result Panel
+
+3. Assignment Evaluation Page
+	a. Evaluation Panel
 ---------------------------------------*/
 
-var app = angular.module('assessment', ['cms']);
+var app = angular.module('assessment', ['cms', 'result', 'assignment']);
 
 // Score Card ------------------------
 app.directive('scoreCard', function(){
@@ -50,13 +56,6 @@ app.directive('deleteAssignmentForm', function(){
 	};
 });
 
-// Result Panel ------------------------
-app.directive('resultPanel', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'result-panel.html'
-	};
-});
 
 // Score Card Controller
 app.controller('scoreCardCtrl', function($scope){
