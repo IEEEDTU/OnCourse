@@ -1,3 +1,4 @@
+
 var app = angular.module('modalApp', ['ui.bootstrap']);
 
 /*----- Modal Controllers -----*/
@@ -62,11 +63,11 @@ var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm,
 			$scope.data = 'title=' + $scope.project.title + 
 				'&description=' + $scope.project.description + 
 				'&highlight=' + $scope.project.highlight + 
-				'&startDate=' + $scope.project.startDate +
-				'&endDate=' + $scope.project.endDate + 
+				'&startDate=' + "2016-05-12" +//$scope.project.startDate +
+				'&endDate=' + "2016-05-12" +//$scope.project.endDate +
 				'&projectType=' + $scope.project.projectType + 
 				'&teamSize=' + $scope.project.teamSize +
-				'&rollNo=2K12/SE/001';
+				'&dtuRegId=DTU/2K12/B08/1200';
 			console.log($scope.data);
 			$http({
 				method: 'POST',
