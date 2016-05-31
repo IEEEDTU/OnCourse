@@ -1,15 +1,24 @@
 var app = angular.module('modalApp', ['ui.bootstrap']);
 
+app.factory('newsModalService', function($http) {
+	return {
+		getNews : function(id) {
+			return $http.get("http://127.0.0.1:8000/newsfeed/getNewsById?id="+id).then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
 /*----- Modal Controllers -----*/
 // For displaying & creating  news -----------------
+
 app.controller("newsModalCtrl", ['$scope', '$modal', '$log',
-
     function ($scope, $modal, $log) {
-
-        $scope.displayNewsDialog = function (news) {
+        $scope.displayNewsDialog = function (newsId) {
             $scope.message = "Show Form Button Clicked";
             console.log($scope.message);
-			$scope.news = news;
+            $scope.id = newsId;
+			      //console.log($scope.news);
 
             var modalInstance = $modal.open({
                 templateUrl: 'display-news-modal.html',
@@ -47,7 +56,22 @@ app.controller("newsModalCtrl", ['$scope', '$modal', '$log',
         };
 }]);
 
-var newsModalInstanceCtrl = function ($scope, $modalInstance) {
+var newsModalInstanceCtrl = function ($scope, $modalInstance, newsModalService) {
+    $scope.news = [];
+    newsModalService.getNews($scope.id).then(function(news){
+		if(news.hasOwnProperty('exception')){
+			alert(news.exception);
+		}else{
+			$scope.news = news.news;
+		}
+		});
+    /*$http.get("http://127.0.0.1:8000/newsfeed/getNewsById?id=2").then(function(response) {
+        if(news.hasOwnProperty('exception')){
+        alert(news.exception);
+      }else{
+        $scope.news = news.news;
+      }
+    });*/
     $scope.close = function () {
         $modalInstance.dismiss('cancel');
     };
@@ -99,7 +123,7 @@ app.controller("eventModalCtrl", ['$scope', '$modal', '$log',
         $scope.displayEventDialog = function (event) {
             $scope.message = "Show Form Button Clicked";
             console.log($scope.message);
-			$scope.event = event;
+			      $scope.event = event;
 
             var modalInstance = $modal.open({
                 templateUrl: 'display-event-modal.html',
@@ -137,7 +161,8 @@ app.controller("eventModalCtrl", ['$scope', '$modal', '$log',
         };
 }]);
 
-var displayEventModalInstanceCtrl = function ($scope, $modalInstance) {
+var displayEventModalInstanceCtrl = function ($scope, $modalInstance, $http) {
+
     $scope.close = function () {
         $modalInstance.dismiss('cancel');
     };

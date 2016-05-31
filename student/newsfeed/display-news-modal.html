@@ -1,12 +1,12 @@
 <div class="ng-scope">
   <div class="modal-header bg-green">
     <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">{{ news.headline }}</h4>
+    <h4 class="modal-title">{{ news[0].fields.headline }}</h4>
   </div>
   <div class="modal-body">
     <img class="display-image" src="{{ news.image }}" ng-show="news.image">
-    <p class="text-justify">{{ news.description }}</p>
-    <span ng-show="news.link">Source: <a href="{{ news.link }}" target="_blank">{{ news.link }}</a></span>
+    <p class="text-justify">{{ news[0].fields.description }}</p>
+    <span ng-show="news.link">Source: <a href="{{ news[0].fields.link }}" target="_blank">{{ news[0].fields.link }}</a></span>
   </div>
   <div class="modal-footer bg-green">
     <button type="button" class="btn btn-default pull-right" ng-click="close()">Close</button>

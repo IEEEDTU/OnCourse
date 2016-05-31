@@ -51,7 +51,7 @@ app.directive('settingPanel', function(){
 app.factory('userService', function($http) {
 	return {
 		getStudentDetail : function() {
-			return $http.get("http://127.0.0.1:8000/profiler/getStudentByRollNo?rollNo="+"2K12/SE/001").then(function(response) {
+			return $http.get("http://127.0.0.1:8000/profiler/getStudentByRollNo?rollNo="+"2K12/SE/059").then(function(response) {
 				return response.data;
 			});
 		}
@@ -87,7 +87,7 @@ $scope.student = [];
 			'&alternativeEmail=' + $scope.student.alternativeEmail + 
 			'&personalMobile=' + $scope.student.personalMobile + 
 			'&alternativeMobile=' + $scope.student.alternativeMobile +
-			'&rollNo=' + '2K12/SE/001';
+			'&rollNo=' + '2K12/SE/059';
 			
 			$http({
 					method: 'POST',
@@ -110,7 +110,7 @@ $scope.student = [];
 app.factory('projectService', function($http) {
 	return {
 		getProjectDetail : function() {
-			return $http.get("http://127.0.0.1:8000/profiler/retrieveProjects?rollNo="+"2K12/SE/001").then(function(response) {
+			return $http.get("http://127.0.0.1:8000/profiler/retrieveProjects?rollNo="+"2K12/SE/059").then(function(response) {
 				return response.data;
 			});
 		}

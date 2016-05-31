@@ -67,7 +67,7 @@ var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm,
 				'&endDate=' + "2016-05-12" +//$scope.project.endDate +
 				'&projectType=' + $scope.project.projectType + 
 				'&teamSize=' + $scope.project.teamSize +
-				'&dtuRegId=DTU/2K12/B08/1200';
+				'&rollNo=2K12/SE/059';
 			console.log($scope.data);
 			$http({
 				method: 'POST',
@@ -79,6 +79,7 @@ var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm,
 					alert(response.data.exception);
 				}else{
 					$scope.response = response.data;
+          alert('Project added successfully, Refresh the page to see!');
 				}
 			});
             console.log($scope.form.projectForm.title);
