@@ -34,19 +34,7 @@
 
       <div style="margin-top:10px;">
         <ul class="list-group" id="interest">
-          <li class="list-group-item">Databases
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Software Engineering
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Artificial Intelligence
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Theory of Computation
+          <li class="list-group-item" ng-repeat="field in fields">{{ field.fields.fieldName }}
             <button type="button" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
           </li>
@@ -73,19 +61,7 @@
 
       <div style="margin-top:10px;">
         <ul class="list-group" id="skill">
-          <li class="list-group-item">Databases
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Software Engineering
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Artificial Intelligence
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </li>
-          <li class="list-group-item">Theory of Computation
+          <li class="list-group-item" ng-repeat="skill in skills">{{ skill.fields.skillName }}
             <button type="button" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
           </li>
