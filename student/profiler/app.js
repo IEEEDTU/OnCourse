@@ -58,7 +58,7 @@ app.factory('userService', function($http) {
 	}
 });
 // User Profile Controller
-app.controller('userProfileCtrl', function(userService,$scope){
+app.controller('userProfileCtrl', [ 'userService', '$scope', '$http', function(userService, $scope, $http){
 $scope.student = [];
 	// 	var config = {
 	// 		headers: {
@@ -81,10 +81,31 @@ $scope.student = [];
 	});
 	
 	$scope.updateProfile = function(){
-		
+		if ($scope.form.newsForm.$valid) {
+			$scope.data = 'preferredName=' + $scope.student.preferredName + 
+			'&personalEmail=' + $scope.student.personalEmail + 
+			'&alternativeEmail=' + $scope.student.alternativeEmail + 
+			'&personalMobile=' + $scope.student.personalMobile + 
+			'&alternativeMobile=' + $scope.student.alternativeMobile +
+			'&rollNo=' + '2K12/SE/001';
+			
+			$http({
+					method: 'POST',
+					url: 'http://127.0.0.1:8000/profiler/editStudentDetails/',
+					data: $scope.data,
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+				}).then(function(response){
+					if(response.data.hasOwnProperty('exception')){
+						alert(response.data.exception);
+					}else{
+						$scope.response = response.data;
+						alert('Profile updated successfully, Refresh the page to see!');
+					}
+				});
+		}
 	}
 		
-});
+}]);
 
 app.factory('projectService', function($http) {
 	return {
@@ -98,7 +119,7 @@ app.factory('projectService', function($http) {
 // Projects Controller
 app.controller('projectCtrl', function($scope,projectService){
 	$scope.projects = [];
-	// 	var config = {
+	// 	var conf\ig = {
 	// 		headers: {
 	//         	'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
 	//         	'Accept': 'application/json',
@@ -120,7 +141,49 @@ app.controller('projectCtrl', function($scope,projectService){
 	});
 });
 
+app.factory('fieldsService', function($http) {
+	return {
+		getFields : function() {
+			return $http.get("http://127.0.0.1:8000/profiler/retrieveFields").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+app.factory('skillsService', function($http) {
+	return {
+		getSkills : function() {
+			return $http.get("http://127.0.0.1:8000/profiler/retrieveSkills").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
 // Interest Field & Personal Skill Controller
-app.controller('fieldSkillCtrl', function(){
+app.controller('fieldSkillCtrl', function($scope, fieldsService, skillsService){
+	$scope.fields = [];
+	$scope.skills = [];
+	
+	fieldsService.getFields().then(function(fields){
+		if(fields.hasOwnProperty('exception')){
+			alert(fields.exception);
+		}else{
+			$scope.fields = fields.fields;
+			
+		}
+		console.log(fields);
+	});
+	
+	skillsService.getSkills().then(function(skills){
+		if(skills.hasOwnProperty('exception')){
+			alert(skills.exception);
+		}else{
+			$scope.skills = skills.skills;
+			
+		}
+		console.log(skills);
+	});
 });
 

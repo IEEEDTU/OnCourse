@@ -92,7 +92,7 @@ var addProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm,
     };
 };
 
-var editProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm) {
+var editProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm, $http) {
     $scope.form = {}
     $scope.submitForm = function () {
         if ($scope.form.projectForm.$valid) {
