@@ -11,18 +11,18 @@
     <p class="help-block">Organiser: {{ event[0].fields.organisedBy }}</p>
     <ul class="list-unstyled row">
       <li class="col-md-6 col-sm-6"><i class="fa fa-calendar"></i>
-        Start Date: {{ event[0].fields.startDateTime.day }} - {{ event[0].fields.startDateTime.month }} - {{
-        event[0].fields.startDateTime.year }}
+		  Start Date: {{ event[0].fields.startDateTime | date:'dd' }} - {{ event[0].fields.startDateTime | date:'MMM' }} - {{
+        event[0].fields.startDateTime | date:'yyyy' }}
       </li>
       <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i>
-        Start Time: {{ event[0].fields.startDateTime.hour }}:{{ event[0].fields.startDateTime.minute }}
+		  Start Time: {{ event[0].fields.startDateTime | date:'HH' }}:{{ event[0].fields.startDateTime | date:'mm' }}
       </li>
       <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-calendar"></i>
-        End Date: {{ event[0].fields.endDateTime.day }} - {{ event[0].fields.endDateTime.month }} - {{
-        event[0].fields.endDateTime.year }}
+        End Date: {{ event[0].fields.endDateTime | date:'dd' }} - {{ event[0].fields.endDateTime | date:'MMM' }} - {{
+        event[0].fields.endDateTime | date:'yyyy' }}
       </li>
       <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-clock-o"></i>
-        End Time: {{ event[0].fields.endDateTime.hour }}:{{ event[0].fields.endDateTime.minute }}
+        End Time: {{ event[0].fields.endDateTime | date:'HH' }}:{{ event[0].fields.endDateTime | date:'mm' }}
       </li>
       <li class="col-md-12 col-sm-12"><i class="fa fa-map-marker"></i>
         Venue: {{ event[0].fields.venue }}
