@@ -189,3 +189,33 @@ app.controller('eventsCtrl', function($scope, eventsService){
 	});
 	
 });
+
+//Course controller
+app.factory('courseService', function($http) {
+	return {
+		getCourse : function() {
+			return $http.get("http://127.0.0.1:8000/course/retrieveCourses?branchCode=SE&degreeCode=BTech&degreeType=Regular&semester=4").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+app.controller('courseCtrl', function($scope, courseService){
+	$scope.courses = [];
+	courseService.getCourse().then(function(courses){
+		if(courses.hasOwnProperty('exception')){
+			alert(courses.exception);
+		}else{
+			$scope.courses = courses.courses;
+		}
+		console.log(courses);
+	});
+
+  /*$scope.fetchCourse=function(id){
+		sharedProperties.setProperty(id);
+		id=sharedProperties.getProperty()
+		console.log(id);
+  };*/
+		//console.log(id);
+});

@@ -2,7 +2,7 @@
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar" ng-controller="sidebarCtrl" ng-scope>
 <!-- Sidebar user panel (optional) -->
-  <div class="user-panel">
+  <div class="user-panel" style="margin:20px 0;">
     <div class="pull-left image">
       <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
     </div>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <!-- search form (Optional) -->
+  <!-- search form (Optional) --
   <form action="#" method="get" class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -28,8 +28,9 @@
   <ul class="sidebar-menu">
     <li class="header">MAIN NAVIGATION</li>
     <!-- Optionally, you can add icons to the links -->
+    <li ng-class="{active : tabSelected==0}"><a href="../dashboard/index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
     <li ng-class="{active : tabSelected==1}"><a href="../profiler/index.html"><i class="fa fa-user"></i> <span>Profile</span></a></li>
-    <li ng-class="{active : tabSelected==2}"><a href="../communique/mailbox.html"><i class="fa fa-envelope"></i> <span>Mailbox</span></a></li>
+    <!--li ng-class="{active : tabSelected==2}"><a href="../communique/mailbox.html"><i class="fa fa-envelope"></i> <span>Mailbox</span></a></li-->
     <li ng-class="{active : tabSelected==3}"><a href="../workspace/index.html"><i class="fa fa-folder-open"></i> <span>Workspace</span></a></li>
     <li ng-class="{active : tabSelected==4}"><a href="../course/index.html"><i class="fa fa-book"></i> <span>Courses</span></a></li>
     <li ng-class="{active : tabSelected==5}"><a href="../assessment/index.html"><i class="fa fa-bar-chart"></i> <span>Assessment</span></a></li>

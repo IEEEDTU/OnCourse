@@ -1,4 +1,4 @@
-<div class="box box-danger">
+<div class="box box-danger" ng-controller="courseCtrl">
   <!-- box header -->
   <div class="box-header with-border">
     <i class="fa fa-book"></i>
@@ -21,11 +21,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>COE-211</td>
-            <td>Database Management Systems</td>
+          <tr ng-repeat="course in courses">
+            <td>{{course.pk}}</td>
+            <td>{{course.fields.courseName}}</td>
           </tr>
-          <tr>
+          <!--tr>
             <td>COE-212</td>
             <td>Computer Systems Organisation</td>
           </tr>
@@ -60,7 +60,7 @@
           <tr>
             <td>COE-220</td>
             <td>Self Study</td>
-          </tr>
+          </tr-->
         </tbody>
       </table>
     </div>
