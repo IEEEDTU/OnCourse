@@ -1,0 +1,71 @@
+<div class="ng-scope">
+  <div class="modal-header bg-purple">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{{ event.fields.eventName }}</h4>
+  </div>
+  <div class="modal-body">
+    <img class="display-image" src="{{ event.fields.image }}">
+
+    <p class="text-justify">{{ event.fields.description }}</p>
+
+    <p class="help-block">Organiser: {{ event.fields.organisedBy }}</p>
+    <ul class="list-unstyled row">
+      <li class="col-md-6 col-sm-6"><i class="fa fa-calendar"></i>
+<<<<<<< HEAD
+		  Start Date: {{ event.fields.startDateTime | date:'dd' }} - {{ event.fields.startDateTime | date:'MMM' }} - {{
+        event.fields.startDateTime | date:'yyyy' }}
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i>
+		  Start Time: {{ event.fields.startDateTime | date:'HH' }}:{{ event.fields.startDateTime | date:'mm' }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-calendar"></i>
+        End Date: {{ event.fields.endDateTime | date:'dd' }} - {{ event.fields.endDateTime | date:'MMM' }} - {{
+        event.fields.endDateTime | date:'yyyy' }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-clock-o"></i>
+        End Time: {{ event.fields.endDateTime | date:'HH' }}:{{ event.fields.endDateTime | date:'mm' }}
+=======
+		  Start Date: {{ event[0].fields.startDateTime | date:'dd' }} - {{ event[0].fields.startDateTime | date:'MMM' }} - {{
+        event[0].fields.startDateTime | date:'yyyy' }}
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-clock-o"></i>
+		  Start Time: {{ event[0].fields.startDateTime | date:'HH' }}:{{ event[0].fields.startDateTime | date:'mm' }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-calendar"></i>
+        End Date: {{ event[0].fields.endDateTime | date:'dd' }} - {{ event[0].fields.endDateTime | date:'MMM' }} - {{
+        event[0].fields.endDateTime | date:'yyyy' }}
+      </li>
+      <li class="col-md-6 col-sm-6" ng-show="event[0].fields.endDateTime"><i class="fa fa-clock-o"></i>
+        End Time: {{ event[0].fields.endDateTime | date:'HH' }}:{{ event[0].fields.endDateTime | date:'mm' }}
+>>>>>>> 32e5e2e43d9bc280492cff2aa74ed076e27d60fe
+      </li>
+      <li class="col-md-12 col-sm-12"><i class="fa fa-map-marker"></i>
+        Venue: {{ event.fields.venue }}
+      </li>
+      <li class="col-md-12 col-sm-12" ng-show="event.fields.website"><i class="ion-ios-world-outline"></i>
+        Website: <a href="{{ event.fields.website }}" target="_blank">{{ event.fields.website }}</a>
+      </li>
+      <li class="col-md-12 col-sm-12" ng-show="event.fields.fbEvent"><i class="fa fa-facebook-official"></i>
+        Facebook Event: <a href="{{ event.fields.fbEvent }}" target="_blank">{{ event.fields.fbEvent }}</a>
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-phone"></i>
+        Contact: {{ event.fields.mobile }}
+      </li>
+      <li class="col-md-6 col-sm-6"><i class="fa fa-envelope"></i>
+        Email: {{ event.fields.email }}
+      </li>
+    </ul>
+  </div>
+  <div class="modal-footer bg-purple">
+    <button type="button" class="btn btn-default pull-right" ng-click="close()">Close</button>
+    <!--button type="button" class="btn btn-primary">Save changes</button-->
+  </div>
+</div>
+
+<style>
+  .display-image{
+  margin: 30px auto;
+  display: block;
+  }
+</style>
+<script src="../js/custom.js"></script>
