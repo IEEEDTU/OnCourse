@@ -26,7 +26,7 @@
         </datalist>
 
         <div class="input-group-btn">
-          <button type="button" class="btn btn-default">Add Interest</button>
+          <button type="button" ng-click="addField(interest)" class="btn btn-default">Add Interest</button>
         </div>
         <!-- /btn-group -->
       </div>
@@ -34,8 +34,8 @@
 
       <div style="margin-top:10px;">
         <ul class="list-group" id="interest">
-          <li class="list-group-item" ng-repeat="field in fields">{{ field.fields.fieldName }}
-            <button type="button" class="close" aria-label="Close">
+          <li class="list-group-item" ng-hide="!ff" ng-repeat="field in fields">{{ field.fields.fieldName }}
+			  <button type="button" ng-click="ff = false; delField(field.pk)" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
           </li>
         </ul>
@@ -47,13 +47,13 @@
       <label>Enter your personal skills</label>
 
       <div class="input-group">
-        <input list="fields2" name="skill" class="form-control" ng-model="skill">
+        <input list="fields2" name="skill" class="form-control" ng-model="sk">
         <datalist id="fields2">
           <option value="Database"></option>
         </datalist>
 
         <div class="input-group-btn">
-          <button type="button" class="btn btn-default">Add Skill</button>
+			<button type="button" ng-click="addSkill(sk)" class="btn btn-default">Add Skill</button>
         </div>
         <!-- /btn-group -->
       </div>
@@ -61,8 +61,8 @@
 
       <div style="margin-top:10px;">
         <ul class="list-group" id="skill">
-          <li class="list-group-item" ng-repeat="skill in skills">{{ skill.fields.skillName }}
-            <button type="button" class="close" aria-label="Close">
+          <li class="list-group-item" ng-hide="!fs" ng-repeat="skill in skills">{{ skill.fields.skillName }}
+            <button type="button" ng-click="fs = false; delSkill(skill.pk)" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
           </li>
         </ul>

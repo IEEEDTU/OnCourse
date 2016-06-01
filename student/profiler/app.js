@@ -117,7 +117,7 @@ app.factory('projectService', function($http) {
 	}
 });
 // Projects Controller
-app.controller('projectCtrl', function($scope,projectService){
+app.controller('projectCtrl', [ '$scope', '$http', 'projectService', function($scope, $http, projectService){
 	$scope.projects = [];
 	// 	var conf\ig = {
 	// 		headers: {
@@ -127,6 +127,21 @@ app.controller('projectCtrl', function($scope,projectService){
 	//     	}
 	//     };
 	
+	$scope.deleteProject = function(id){
+		$scope.data = 'id=' + id; 
+		$http({
+			method: 'POST',
+		url: 'http://127.0.0.1:8000/profiler/deleteProject/',
+		data: $scope.data,
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		}).then(function(response){
+			if(response.data.hasOwnProperty('exception')){
+				alert(response.data.exception);
+			}else{
+				alert('Project deleted successfully');
+			}
+		});
+	}
 	
 	projectService.getProjectDetail().then(function(projects){
 		if(projects.hasOwnProperty('exception')){
@@ -139,7 +154,7 @@ app.controller('projectCtrl', function($scope,projectService){
 		
 		console.log(projects);
 	});
-});
+}]);
 
 app.factory('fieldsService', function($http) {
 	return {

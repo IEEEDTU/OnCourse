@@ -16,7 +16,7 @@
     <!-- Event Description -->
     <div class="form-group col-lg-12 col-md-12 col-sm-12">
       <label>Event Description*</label>
-      <textarea name="description" class="form-control" ng-model="events.description" ng-minlength="10" ng-maxlength="4000"
+      <textarea name="description" class="form-control" ng-model="event.description" ng-minlength="10" ng-maxlength="4000"
                 required></textarea>
 
       <p ng-show="form.eventForm.description.$error.minlength  && !form.eventForm.description.$pristine"
