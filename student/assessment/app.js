@@ -76,9 +76,55 @@ app.controller('scoreCardCtrl', function($scope){
 	}
 });
 
+app.factory('assignmentService', function($http) {
+	return {
+		getAssignment : function() {
+			return $http.get("http://127.0.0.1:8000/assessment/retrieveAssignmentByBranch").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
+app.factory('assignmentResponseService', function($http) {
+	return {
+		getAssignmentResponse : function() {
+			return $http.get("http://127.0.0.1:8000/assessment/retrieveAssignmentResponsesByStudent?rollNo="+"2K12/SE/059").then(function(response) {
+				return response.data;
+			});
+		}
+	}
+});
+
 // Assignment Panel Controller
-app.controller('assignmentPanelCtrl', function($scope){
+app.controller('assignmentPanelCtrl', function($scope,assignmentService,assignmentResponseService){
 	// assignments
+	$scope.assignment=[];
+	assignmentService.getAssignment().then(function(assignments){
+		if(assignments.hasOwnProperty('exception')){
+			alert(assignments.exception);
+		}else{
+			$scope.assignment = assignments.assignment;
+
+		}
+		
+		
+		console.log(assignments);
+	});
+
+	$scope.assignmentGrades=[];
+	assignmentResponseService.getAssignmentResponse().then(function(grades){
+		if(grades.hasOwnProperty('exception')){
+			alert(grades.exception);
+		}else{
+			$scope.assignmentGrades = grades.assignment;
+
+		}
+		
+		
+		console.log($scope.assignmentGrades);
+	});
+		/*
 	$scope.assignments = [{
 		assignmentCode: "SE301A",
 		course: "SE 301",
@@ -147,5 +193,6 @@ app.controller('assignmentPanelCtrl', function($scope){
 		grade: "B",
 		submissionDate: "2016-05-12",
 		status:"To be evaluated"
-	}];
+	}];*/
+
 });
