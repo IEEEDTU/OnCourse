@@ -44,12 +44,12 @@
           <th class="text-center cell-header">Comments or Notes</th>
         </tr>
         
-        <tr ng-repeat="assignment in assignments">
-          <td class="text-center">{{assignment.assignmentCode}}</td>
-          <td class="text-center">{{assignment.course}}</td>
-          <td><a href="{{assignment.link}}" target="_blank">{{assignment.link}}</a></td>
-          <td class="text-center">{{assignment.deadline}}</td>
-          <td>{{assignment.comments}}</td>
+        <tr ng-repeat="assign in assignment">
+          <td class="text-center">{{assign.pk}}</td>
+          <td class="text-center">{{assign.fields.course}}</td>
+          <td><a href="{{assignment.link}}" target="_blank">{{assign.fields.link}}</a></td>
+          <td class="text-center">{{assign.fields.deadline}}</td>
+          <td>{{assign.fields.comments}}</td>
         </tr>
         
        
@@ -68,18 +68,18 @@
         </tr>
 
         <tr ng-repeat="grade in assignmentGrades">
-          <td class="text-center">{{grade.assignmentCode}} </td>
-          <td class="text-center">{{grade.course}} </td>
+          <td class="text-center">{{grade.fields.assignment}} </td>
+          <td class="text-center">{{grade.fields.assignment}} </td>
           <td>
-            <a href="{{grade.responseLink}}" ng-show="grade.responseLink">{{grade.responseLink}} </a>
-            <span ng-show="!grade.responseLink"> -- </span>
+            <a href="{{grade.fields.responseLink}}" ng-show="grade.fields.responseLink">{{grade.fields.responseLink}} </a>
+            <span ng-show="!grade.fields.responseLink"> -- </span>
           </td>
-          <td class="text-center">{{grade.grade}} </td>
+          <td class="text-center">{{grade.fields.grade}} </td>
           <td class="text-center">
-            <span ng-show="grade.submissionDate"> {{grade.submissionDate}} </span>
-            <span ng-show="!grade.submissionDate"> -- </span>
+            <span ng-show="grade.fields.submissionDate"> {{grade.fields.submissionDate}} </span>
+            <span ng-show="!grade.fields.submissionDate"> -- </span>
           </td>
-          <td>{{grade.status}} </td>
+          <td>{{grade.fields.status}} </td>
         </tr>
         
       </table>
