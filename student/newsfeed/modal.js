@@ -99,9 +99,9 @@ var createNewsModalInstanceCtrl = function ($scope, $modalInstance, newsForm, $h
 			
 			$http({
 				method: 'POST',
-		 url: 'http://127.0.0.1:8000/newsfeed/addNews/',
-		 data: $scope.data,
-		 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+				url: 'http://127.0.0.1:8000/newsfeed/addNews/',
+				data: $scope.data,
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 			}).then(function(response){
 				if(response.data.hasOwnProperty('exception')){
 					alert(response.data.exception);
@@ -188,10 +188,37 @@ var displayEventModalInstanceCtrl = function ($scope, $modalInstance, eventModal
 
 var createEventModalInstanceCtrl = function ($scope, $modalInstance, eventForm) {
     $scope.form = {}
+    $scope.event = {}
     $scope.submitForm = function () {
         if ($scope.form.eventForm.$valid) {
             console.log('event form is in scope');
             console.log($scope.form.eventForm.eventName);
+			
+			$scope.data = 'eventName=' + $scope.event.eventName + 
+			'&venue=' + $scope.event.venue + 
+			'&startDateTime=' + $scope.event + //issue 1
+			'&description=' + $scope.event.description + 
+			'&email=' + $scope.event.email + 
+			'&organisedBy=' + $scope.event.organisedBy + 
+			'&endDateTime=' + $scope.event + //issue 2
+			'&fbEvent=' + $scope.event.fbEvent + 
+			'&website=' + $scope.event.website + 
+			'&image=' + $scope.event.image; 
+			//issue 3 mobile/contact info
+			$http({
+				method: 'POST',
+				url: 'http://127.0.0.1:8000/newsfeed/addEvent/',
+				data: $scope.data,
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			}).then(function(response){
+				if(response.data.hasOwnProperty('exception')){
+					alert(response.data.exception);
+				}else{
+					$scope.response = response.data;
+					alert('Event added successfully, Refresh the page to see!');
+				}
+			});
+			
             $modalInstance.close('closed');
         } else {
             console.log('eventForm is not in scope');
