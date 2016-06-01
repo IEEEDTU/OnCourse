@@ -4,74 +4,83 @@ app.factory('newsModalService', function($http) {
 	return {
 		getNews : function(id) {
 			return $http.get("http://127.0.0.1:8000/newsfeed/getNewsById?id="+id).then(function(response) {
+				console.log("news factory data:");
+				console.log(response.data);
 				return response.data;
 			});
 		}
 	}
 });
+
+app.factory('eventModalService', function($http) {
+	return {
+		getEvent : function(id) {
+			return $http.get("http://127.0.0.1:8000/newsfeed/getEventById?id="+id).then(function(response) {
+				console.log("event factory data:");
+				console.log(response.data);
+				return response.data;
+			});
+		}
+	}
+});
+
 /*----- Modal Controllers -----*/
 // For displaying & creating  news -----------------
-
 app.controller("newsModalCtrl", ['$scope', '$modal', '$log',
     function ($scope, $modal, $log) {
         $scope.displayNewsDialog = function (newsId) {
-            $scope.message = "Show Form Button Clicked";
-            console.log($scope.message);
-            $scope.id = newsId;
-			      //console.log($scope.news);
+        $scope.message = "Show Form Button Clicked";
+        console.log($scope.message);
+        $scope.id = newsId;
+        //console.log($scope.id);
 
-            var modalInstance = $modal.open({
-                templateUrl: 'display-news-modal.html',
-                controller: newsModalInstanceCtrl,
-                scope: $scope
-            });
+        var modalInstance = $modal.open({
+            templateUrl: 'display-news-modal.html',
+            controller: displayNewsModalInstanceCtrl,
+            scope: $scope
+        });
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 
-        $scope.createNewsDialog = function (){
-            $scope.message = "Show Form Button Clicked";
-            console.log($scope.message);
+    $scope.createNewsDialog = function (){
+        $scope.message = "Show Form Button Clicked";
+        console.log($scope.message);
 
-            var modalInstance = $modal.open({
-                templateUrl: 'create-news-modal.html',
-                controller: createNewsModalInstanceCtrl,
-                scope: $scope,
-                resolve: {
-                    newsForm: function () {
-                        return $scope.newsForm;
-                    }
+        var modalInstance = $modal.open({
+            templateUrl: 'create-news-modal.html',
+            controller: createNewsModalInstanceCtrl,
+            scope: $scope,
+            resolve: {
+                newsForm: function () {
+                    return $scope.newsForm;
                 }
-            });
+            }
+        });
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 }]);
 
-var newsModalInstanceCtrl = function ($scope, $modalInstance, newsModalService) {
+var displayNewsModalInstanceCtrl = function ($scope, $modalInstance, newsModalService) {
     $scope.news = [];
     newsModalService.getNews($scope.id).then(function(news){
 		if(news.hasOwnProperty('exception')){
-			alert(news.exception);
-		}else{
-			$scope.news = news.news;
-		}
+			    alert(news.exception);
+		    }else{
+			    $scope.news = news.news;
+		    }
 		});
-    /*$http.get("http://127.0.0.1:8000/newsfeed/getNewsById?id=2").then(function(response) {
-        if(news.hasOwnProperty('exception')){
-        alert(news.exception);
-      }else{
-        $scope.news = news.news;
-      }
-    });*/
+		console.log($scope.news);
+
     $scope.close = function () {
         $modalInstance.dismiss('cancel');
     };
@@ -117,51 +126,60 @@ var createNewsModalInstanceCtrl = function ($scope, $modalInstance, newsForm, $h
 
 // For displaying & creating event -----------------
 app.controller("eventModalCtrl", ['$scope', '$modal', '$log',
-
     function ($scope, $modal, $log) {
+        $scope.displayEventDialog = function (eventId) {
+        $scope.message = "Show Form Button Clicked";
+        console.log($scope.message);
+        $scope.id = eventId;
+        //console.log($scope.id);
 
-        $scope.displayEventDialog = function (event) {
-            $scope.message = "Show Form Button Clicked";
-            console.log($scope.message);
-			      $scope.event = event;
+        var modalInstance = $modal.open({
+            templateUrl: 'display-event-modal.html',
+            controller: displayEventModalInstanceCtrl,
+            scope: $scope
+        });
 
-            var modalInstance = $modal.open({
-                templateUrl: 'display-event-modal.html',
-                controller: displayEventModalInstanceCtrl,
-                scope: $scope
-            });
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
+    $scope.createEventDialog = function (){
+        $scope.message = "Show Form Button Clicked";
+        console.log($scope.message);
 
-        $scope.createEventDialog = function (){
-            $scope.message = "Show Form Button Clicked";
-            console.log($scope.message);
-
-            var modalInstance = $modal.open({
-                templateUrl: 'create-event-modal.html',
-                controller: createEventModalInstanceCtrl,
-                scope: $scope,
-                resolve: {
-                    eventForm: function () {
-                        return $scope.eventForm;
-                    }
+        var modalInstance = $modal.open({
+            templateUrl: 'create-event-modal.html',
+            controller: createEventModalInstanceCtrl,
+            scope: $scope,
+            resolve: {
+                eventForm: function () {
+                    return $scope.eventForm;
                 }
-            });
+            }
+        });
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 }]);
 
-var displayEventModalInstanceCtrl = function ($scope, $modalInstance, $http) {
+var displayEventModalInstanceCtrl = function ($scope, $modalInstance, eventModalService) {
+    $scope.event = [];
+    eventModalService.getEvent($scope.id).then(function(event){
+		if(event.hasOwnProperty('exception')){
+			    alert(event.exception);
+		    }else{
+			    $scope.event = event.events;
+			    //$scope.event[0].fields.eventName="xyz";
+		    }
+		});
+		console.log($scope.event);
 
     $scope.close = function () {
         $modalInstance.dismiss('cancel');

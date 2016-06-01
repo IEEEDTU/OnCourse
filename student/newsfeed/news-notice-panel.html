@@ -60,7 +60,7 @@
 						<li class="list-box" ng-repeat="notice in filteredNotices">
 							<p class="list-box-body"><a href="{{notice.fields.fileLink}}" target="_blank">{{notice.fields.subject}}</a>
 							</p>
-							<span class="pull-right text-muted list-box-footer">{{notice.fields.issueDate}}</span>
+							<span class="pull-right text-muted list-box-footer">{{notice.fields.issueDate | limitTo: 10}}</span>
 						</li>
 						<!-- END of notice item -->
 					</ul>

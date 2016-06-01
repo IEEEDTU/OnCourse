@@ -72,7 +72,7 @@
               </thead-->
               <tbody>
                 <tr ng-repeat="notice in filteredNotices">
-					<td style="min-width:90px;">{{ notice.fields.issueDate }}</td>
+					<td style="min-width:90px;">{{ notice.fields.issueDate | limitTo: 10 }}</td>
 					<td><a href="#" target="_blank">{{ notice.fields.subject }}</a></td>
                 </tr>
                 <!--tr>
@@ -111,7 +111,7 @@
               </thead-->
               <tbody>
                 <tr ng-repeat="event in filteredEvents">
-                  <td style="min-width:90px;">{{ event.fields.startDateTime }}</td>
+                  <td style="min-width:90px;">{{ event.fields.startDateTime | limitTo: 10 }}</td>
                   <td><a href="#" ng-click="displayEventDialog(event)">{{ event.fields.eventName }}</a></td>
                 </tr>
                 <!--tr>

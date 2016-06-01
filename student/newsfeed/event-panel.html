@@ -11,7 +11,7 @@
     <ul class="events-list event-list-in-box">
       <!-- Event item -->
       <li class="item" ng-repeat="event in filteredEvents">
-        <a href="#" ng-click="displayEventDialog(event)">
+        <a href="#" ng-click="displayEventDialog(event.pk)">
           <div class="event-date-box">
 			  <div class="event-date">{{event.fields.startDateTime | date:'dd'}}</div>
 			  <div class="event-month">{{event.fields.startDateTime | date:'MMM '}}</div>
