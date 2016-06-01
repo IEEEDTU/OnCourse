@@ -52,7 +52,8 @@ app.controller("projectModalCtrl", ['$scope', '$modal', '$log',
         $scope.editProjectDialog = function (project){
             $scope.message = "Show Form Button Clicked";
             console.log($scope.message);
-            $scope.project = project;
+            $scope.project = project.fields;
+			$scope.project.id = project.pk;
 
             var modalInstance = $modal.open({
                 templateUrl: 'edit-project-modal.html',
@@ -123,22 +124,22 @@ var editProjectModalInstanceCtrl = function ($scope, $modalInstance, projectForm
 			$scope.data = 'title=' + $scope.project.title + 
 			'&description=' + $scope.project.description + 
 			'&highlight=' + $scope.project.highlight + 
-			'&startDate=' + $scope.project.startDate +
-			'&endDate=' + $scope.project.endDate + 
+			'&startDate=' + "2016-05-12" +//$scope.project.startDate +
+			'&endDate=' + "2016-05-12" +//$scope.project.endDate +
 			'&projectType=' + $scope.project.projectType + 
 			'&teamSize=' + $scope.project.teamSize +
-			'&rollNo=2K12/SE/001';
+			'&id=' + $scope.project.id;
 			console.log($scope.data);
 			$http({
 				method: 'POST',
-		 url: 'http://127.0.0.1:8000/profiler/addProject/',
-		 data: $scope.data,
-		 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+				url: 'http://127.0.0.1:8000/profiler/editProject/',
+				data: $scope.data,
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 			}).then(function(response){
 				if(response.data.hasOwnProperty('exception')){
 					alert(response.data.exception);
 				}else{
-					$scope.response = response.data;
+					alert("Project data updated successfully!");
 				}
 			});
             $modalInstance.close('closed');

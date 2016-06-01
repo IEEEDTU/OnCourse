@@ -1,6 +1,6 @@
 <div class="modal-header bg-light-blue">
   <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
-  <h3>Add New Project</h3>
+  <h3>Edit Project</h3>
 </div>
 <form name="form.projectForm" ng-submit="submitForm()" novalidate>
   <div class="modal-body row">
@@ -42,8 +42,7 @@
         <input type="date" name="startDate" class="form-control" ng-model="project.startDate" required>
 
         <p ng-show="form.projectForm.startDate.$invalid && !form.projectForm.startDate.$pristine" class="help-block">
-          Enter
-          start date.</p>
+          Enter start date.</p>
       </div>
 
       <!-- End Date -->
@@ -54,6 +53,10 @@
         <!--p ng-show="form.projectForm.endDate.$invalid && !form.projectForm.endDate.$pristine" class="help-block">End date
           should be greater than start date.</p-->
       </div>
+	  
+	  <div ng-model="sDate" style="display: none;"> {{ project.startDate | date:"yyyy-mm-dd" }} </div>
+	  <div ng-model="eDate" style="display: none;"> {{ project.endDate | date:"yyyy-mm-dd" }} </div>
+	  
     </div>
 
     <!-- Project Type -->
